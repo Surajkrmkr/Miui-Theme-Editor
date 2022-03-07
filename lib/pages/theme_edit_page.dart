@@ -1,11 +1,10 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_editor/constants/constants.dart';
 import 'package:flutter_editor/controller/assets_state.dart';
 import 'package:flutter_editor/controller/theme_state.dart';
-import 'package:flutter_editor/pages/homepage.dart';
 import 'package:flutter_editor/pages/theme_preview_stack.dart';
 import 'package:flutter_editor/widgets/save.dart';
+import 'package:flutter_editor/widgets/tooltip.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/buttons.dart';
@@ -65,16 +64,8 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                     const SizedBox(width: 20),
                     IconButton(
                         icon: const Icon(FluentIcons.home),
-                        onPressed: ()async {
-                          showSnackbar(
-                            context,
-                            FluentTheme(
-                              data: ThemeData.dark(),
-                              child: const Snackbar(
-                                content: Text('Theme has not Saved'),
-                              ),
-                            ),
-                          );
+                        onPressed: () async {
+                          getTooltip('Theme has not saved', context);
                           // restart app
                           Get.back();
                         }),
@@ -84,15 +75,7 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                         onPressed: () {
                           updateData();
                           SaveXml.saveXml(themeController.rootPath.string);
-                          showSnackbar(
-                            context,
-                            FluentTheme(
-                              data: ThemeData.dark(),
-                              child: const Snackbar(
-                                content: Text('Theme Saved succesfully!'),
-                              ),
-                            ),
-                          );
+                          getTooltip('Saved successfully', context);
                         }),
                     const SizedBox(width: 20),
                     IconButton(
@@ -100,15 +83,7 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                         onPressed: () async {
                           updateData();
                           SaveXml.saveXml(themeController.rootPath.string);
-                          showSnackbar(
-                            context,
-                            FluentTheme(
-                              data: ThemeData.dark(),
-                              child: const Snackbar(
-                                content: Text('Theme Saved succesfully!'),
-                              ),
-                            ),
-                          );
+                          getTooltip('Saved successfully', context);
                           launch(themeController.rootPath.string +
                               "\\lockscreen\\advance\\manifest.xml");
                         }),
