@@ -45,7 +45,7 @@ dependencies:
   path_provider: ^2.0.9
   path_provider_windows: ^2.0.5
   url_launcher: ^6.0.20
-  flutter_acrylic: ^1.0.0+1
+  bitsdojo_window: ^0.1.1+1
   window_manager: ^0.1.5
   xml: ^5.3.1
 

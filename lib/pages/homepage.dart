@@ -1,15 +1,16 @@
 import 'dart:io';
 
 import 'package:desktop_drop/desktop_drop.dart';
-import 'package:filepicker_windows/filepicker_windows.dart';
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_editor/controller/recent_theme_state.dart';
 import 'package:flutter_editor/controller/theme_state.dart';
 import 'package:flutter_editor/pages/theme_edit_page.dart';
 import 'package:flutter_editor/widgets/buttons.dart';
 import 'package:flutter_editor/widgets/tooltip.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+
+bool darkMode = false;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,12 +23,24 @@ class _HomePageState extends State<HomePage> {
   final ThemeController themeController = Get.find<ThemeController>();
   final RecentThemeController recentThemeController =
       Get.put(RecentThemeController());
+
+  @override
+  void initState() {
+    var box = Hive.box('darkMode');
+    var isDark = box.get('isDark');
+    setState(() {
+      darkMode = isDark?? false;
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return FluentTheme(
       data: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF201B2F),
+        brightness: darkMode ? Brightness.dark : Brightness.light,
+        scaffoldBackgroundColor:
+            darkMode ? const Color(0xFF201B2F) : Colors.white,
         accentColor: magenta,
       ),
       child: ScaffoldPage(
@@ -63,7 +76,8 @@ class _HomePageState extends State<HomePage> {
                                   themeData.themePath;
                               themeController.setDragThemeDetails();
                               getTooltip(
-                            "${themeController.name.string} imported", context);
+                                  "${themeController.name.string} imported",
+                                  context);
                               Get.to(() => const ThemeEditPage());
                             },
                             child: MouseRegion(
@@ -82,14 +96,13 @@ class _HomePageState extends State<HomePage> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 10, vertical: 5),
                                   decoration: BoxDecoration(
-                                    color: Colors.black.withOpacity(0.5),
+                                    color: Colors.black.withOpacity(0.1),
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Text(
                                     themeData.name,
                                     style: const TextStyle(
-                                      fontSize: 16,
-                                    ),
+                                        fontSize: 16, color: Colors.white),
                                   ),
                                 ),
                               ),
@@ -118,6 +131,22 @@ class _HomePageState extends State<HomePage> {
                           getTooltip(
                               'Close the app ! History deleted', context);
                         }),
+                  ),
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: RadioButton(
+                      checked: darkMode,
+                      onChanged: (bool value) {
+                        setState(() {
+                          darkMode = value;
+                          var box = Hive.box('darkMode');
+                          box.put('isDark', value);
+                        });
+                      },
+                      content: const Text(
+                        "DarkMode",
+                      ),
+                    ),
                   ),
                   DropTarget(
                       child: Container(

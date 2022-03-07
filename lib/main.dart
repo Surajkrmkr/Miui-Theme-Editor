@@ -1,5 +1,5 @@
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:flutter_acrylic/flutter_acrylic.dart';
 import 'package:flutter_editor/controller/theme_state.dart';
 import 'package:flutter_editor/model/recent_theme.dart';
 import 'package:flutter_editor/pages/homepage.dart';
@@ -11,14 +11,11 @@ import 'package:window_manager/window_manager.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
-  await Window.initialize();
-  await Window.setEffect(
-    effect: WindowEffect.aero,
-  );
   final appDocumentDirectory = await getApplicationDocumentsDirectory();
   Hive
     ..init(appDocumentDirectory.path)
     ..registerAdapter(RecentThemeAdapter());
+  await Hive.openBox("darkMode");
   windowManager.waitUntilReadyToShow().then((_) async {
     // Hide window title bar
     await windowManager.setSize(const Size(1000, 700));
@@ -38,19 +35,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        themeMode: ThemeMode.dark,
-        home: HomePage());
-  }
-}
-
-class Hello extends StatelessWidget {
-  const Hello({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text("Hello"),
-    );
+        debugShowCheckedModeBanner: false, home: HomePage());
   }
 }

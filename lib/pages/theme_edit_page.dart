@@ -2,6 +2,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_editor/constants/constants.dart';
 import 'package:flutter_editor/controller/assets_state.dart';
 import 'package:flutter_editor/controller/theme_state.dart';
+import 'package:flutter_editor/pages/homepage.dart';
 import 'package:flutter_editor/pages/theme_preview_stack.dart';
 import 'package:flutter_editor/widgets/save.dart';
 import 'package:flutter_editor/widgets/tooltip.dart';
@@ -276,14 +277,16 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
       debugShowCheckedModeBanner: false,
       home: FluentTheme(
         data: ThemeData(
-          navigationPaneTheme: NavigationPaneThemeData(
+          navigationPaneTheme: const NavigationPaneThemeData(
               labelPadding: EdgeInsets.only(left: 10),
               iconPadding: EdgeInsets.only(left: 10)),
-          brightness: Brightness.dark,
-          scaffoldBackgroundColor: const Color(0xFF201B2F),
-          micaBackgroundColor: const Color(0xFF201B2F),
+          brightness: darkMode ? Brightness.dark : Brightness.light,
+          scaffoldBackgroundColor:
+              darkMode ? const Color(0xFF201B2F) : const Color(0xFFF5F5F5),
+          micaBackgroundColor:
+              darkMode ? const Color(0xFF201B2F) : Colors.white,
           accentColor: magenta,
-          inactiveColor: Colors.white,
+          inactiveColor: darkMode ? Colors.white : Colors.black,
           activeColor: const Color(0xffDD4C75),
           scrollbarTheme: const ScrollbarThemeData(
             thickness: 5,
@@ -354,19 +357,29 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
               items: [
                 PaneItem(
                     icon: const Icon(FluentIcons.clock),
-                    title: const Text('TIME'),
+                    title: Text(
+                      'TIME',
+                      style: TextStyle(
+                          color: darkMode ? Colors.white : Colors.black),
+                    ),
                     mouseCursor: SystemMouseCursors.click),
                 PaneItem(
                     icon: const Icon(FluentIcons.cloud_weather),
-                    title: const Text('OTHER'),
+                    title: Text('OTHER',
+                        style: TextStyle(
+                            color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
                 PaneItem(
                     icon: const Icon(FluentIcons.music_note),
-                    title: const Text('MUSIC'),
+                    title: Text('MUSIC',
+                        style: TextStyle(
+                            color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
                 PaneItem(
                     icon: const Icon(FluentIcons.app_icon_default),
-                    title: const Text('APPS'),
+                    title: Text('APPS',
+                        style: TextStyle(
+                            color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
               ],
 
