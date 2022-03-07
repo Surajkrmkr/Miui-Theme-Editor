@@ -62,6 +62,8 @@ class _HomePageState extends State<HomePage> {
                               themeController.rootPath.value =
                                   themeData.themePath;
                               themeController.setDragThemeDetails();
+                              getTooltip(
+                            "${themeController.name.string} imported", context);
                               Get.to(() => const ThemeEditPage());
                             },
                             child: MouseRegion(
@@ -113,7 +115,8 @@ class _HomePageState extends State<HomePage> {
                         ),
                         onPressed: () {
                           recentThemeController.deleteFromRecent();
-                          getTooltip('Close the app ! History deleted',context);
+                          getTooltip(
+                              'Close the app ! History deleted', context);
                         }),
                   ),
                   DropTarget(
@@ -137,6 +140,8 @@ class _HomePageState extends State<HomePage> {
                             name: themeController.name.string,
                             imagePath: themeController.wallPath.string,
                             themePath: themeController.rootPath.string);
+                        getTooltip(
+                            "${themeController.name.string} imported", context);
                         Get.to(() => const ThemeEditPage());
                       }),
                 ],

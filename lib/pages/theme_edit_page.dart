@@ -20,6 +20,7 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
   final Constants constants = Get.put(Constants());
   final ThemeController themeController = Get.find();
   final AssetsController assetsController = Get.put(AssetsController());
+  int index = 0;
   @override
   void initState() {
     setState(() {
@@ -31,344 +32,385 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
 
   @override
   Widget build(BuildContext context) {
-    return FluentTheme(
-      data: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF201B2F),
-        accentColor: magenta,
-        inactiveColor: Colors.white,
-        activeColor: const Color(0xffDD4C75),
-        inactiveBackgroundColor: const Color(0xffDD4C75),
-        scrollbarTheme: ScrollbarThemeData(
-          scrollbarColor: const Color(0xffDD4C75),
-          scrollbarPressingColor: const Color(0xffDD4C75).withOpacity(0.5),
-          backgroundColor: const Color(0xffDD4C75),
-        ),
+    var pages = [
+      Column(
+        children: [
+          inputRow(
+              "Hours",
+              assetsController.x1Align(),
+              assetsController.y1Align(),
+              assetsController.scale1(),
+              assetsController.alpha1(),
+              assetsController.angle1(),
+              assetsController.seq1()),
+          inputRow(
+              "Minutes",
+              assetsController.x2Align(),
+              assetsController.y2Align(),
+              assetsController.scale2(),
+              assetsController.alpha2(),
+              assetsController.angle2(),
+              assetsController.seq2()),
+          inputRow(
+              "Seconds",
+              assetsController.x3Align(),
+              assetsController.y3Align(),
+              assetsController.scale3(),
+              assetsController.alpha3(),
+              assetsController.angle3(),
+              assetsController.seq3()),
+          inputRow(
+              "Time Dot",
+              assetsController.xDotAlign(),
+              assetsController.yDotAlign(),
+              assetsController.scaleDot(),
+              assetsController.alphaDot(),
+              assetsController.angleDot(),
+              assetsController.seqDot()),
+          inputRow(
+              "AM/PM",
+              assetsController.xAMAlign(),
+              assetsController.yAMAlign(),
+              assetsController.scaleAM(),
+              assetsController.alphaAM(),
+              assetsController.angleAM(),
+              assetsController.seqAM()),
+          inputRow(
+            "Analog",
+            assetsController.xAnalogAlign(),
+            assetsController.yAnalogAlign(),
+            assetsController.analogScale(),
+            assetsController.alphaAnalog(),
+            assetsController.angleAnalog(),
+            assetsController.seqAnalog(),
+          ),
+        ],
       ),
-      child: ScaffoldPage(
-          content: Padding(
-        padding: const EdgeInsets.only(top: 0, left: 20, right: 20, bottom: 10),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-                child: Row(
-                  children: [
-                    IconButton(
-                        icon: const Icon(FluentIcons.machine_learning),
-                        onPressed: () {
-                          launch("E:\\Xiaomi Contract\\LOCKSCREEN");
-                        }),
-                    const SizedBox(width: 20),
-                    IconButton(
-                        icon: const Icon(FluentIcons.home),
-                        onPressed: () async {
-                          getTooltip('Theme has not saved', context);
-                          // restart app
-                          Get.back();
-                        }),
-                    const SizedBox(width: 20),
-                    IconButton(
-                        icon: const Icon(FluentIcons.save),
-                        onPressed: () {
-                          updateData();
-                          SaveXml.saveXml(themeController.rootPath.string);
-                          getTooltip('Saved successfully', context);
-                        }),
-                    const SizedBox(width: 20),
-                    IconButton(
-                        icon: const Icon(FluentIcons.code),
-                        onPressed: () async {
-                          updateData();
-                          SaveXml.saveXml(themeController.rootPath.string);
-                          getTooltip('Saved successfully', context);
-                          launch(themeController.rootPath.string +
-                              "\\lockscreen\\advance\\manifest.xml");
-                        }),
-                    const SizedBox(width: 20),
-                    IconButton(
-                        icon: const Icon(FluentIcons.folder),
-                        onPressed: () async {
-                          launch(themeController.rootPath.string +
-                              "\\lockscreen\\advance");
-                        }),
-                    const SizedBox(width: 20),
-                    IconButton(
-                        icon: const Icon(FluentIcons.brush),
-                        onPressed: () async {
-                          launch(
-                              themeController.rootPath.string + "\\icons\\res");
-                        }),
-                    const SizedBox(width: 20),
-                  ],
+      Column(
+        children: [
+          inputRow(
+              "Week Day",
+              assetsController.xWeekAlign(),
+              assetsController.yWeekAlign(),
+              assetsController.scaleWeek(),
+              assetsController.alphaWeek(),
+              assetsController.angleWeek(),
+              assetsController.seqWeek()),
+          inputRow(
+              "Date",
+              assetsController.xDateAlign(),
+              assetsController.yDateAlign(),
+              assetsController.scaleDate(),
+              assetsController.alphaDate(),
+              assetsController.angleDate(),
+              assetsController.seqDate()),
+          inputRow(
+              "Month",
+              assetsController.xMonthAlign(),
+              assetsController.yMonthAlign(),
+              assetsController.scaleMonth(),
+              assetsController.alphaMonth(),
+              assetsController.angleMonth(),
+              assetsController.seqMonth()),
+          inputRow(
+              "Weather",
+              assetsController.xTempAlign(),
+              assetsController.yTempAlign(),
+              assetsController.scaleTemp(),
+              assetsController.alphaTemp(),
+              assetsController.angleTemp(),
+              assetsController.seqTemp()),
+          inputRow(
+              "Weather Icon",
+              assetsController.xWeatherIconAlign(),
+              assetsController.yWeatherIconAlign(),
+              assetsController.scaleWeatherIcon(),
+              assetsController.alphaWeatherIcon(),
+              assetsController.angleWeatherIcon(),
+              assetsController.seqWeatherIcon()),
+        ],
+      ),
+      Column(
+        children: [
+          inputRow(
+              "Music",
+              assetsController.xMusicBgAlign(),
+              assetsController.yMusicBgAlign(),
+              assetsController.scaleMusicBg(),
+              assetsController.alphaMusicBg(),
+              assetsController.angleMusicBg(),
+              assetsController.seqMusicBg()),
+          inputRow(
+              "Prev Btn",
+              assetsController.xPrevBtnAlign(),
+              assetsController.yPrevBtnAlign(),
+              assetsController.scaleBtn(),
+              assetsController.alphaPrevBtn(),
+              assetsController.anglePrevBtn(),
+              assetsController.seqPrevBtn()),
+          inputRow(
+              "Next Btn",
+              assetsController.xNextBtnAlign(),
+              assetsController.yNextBtnAlign(),
+              assetsController.scaleBtn(),
+              assetsController.alphaNextBtn(),
+              assetsController.angleNextBtn(),
+              assetsController.seqNextBtn()),
+        ],
+      ),
+      Column(
+        children: [
+          inputRow(
+            "Facebook",
+            assetsController.xFbAlign(),
+            assetsController.yFbAlign(),
+            assetsController.scaleFb(),
+            assetsController.alphaFb(),
+            assetsController.angleFb(),
+            assetsController.seqFb(),
+          ),
+          inputRow(
+            "Whatsapp",
+            assetsController.xWpAlign(),
+            assetsController.yWpAlign(),
+            assetsController.scaleWp(),
+            assetsController.alphaWp(),
+            assetsController.angleWp(),
+            assetsController.seqWp(),
+          ),
+          inputRow(
+            "Twitter",
+            assetsController.xTwtAlign(),
+            assetsController.yTwtAlign(),
+            assetsController.scaleTwt(),
+            assetsController.alphaTwt(),
+            assetsController.angleTwt(),
+            assetsController.seqTwt(),
+          ),
+          inputRow(
+            "Instagram",
+            assetsController.xInstaAlign(),
+            assetsController.yInstaAlign(),
+            assetsController.scaleInsta(),
+            assetsController.alphaInsta(),
+            assetsController.angleInsta(),
+            assetsController.seqInsta(),
+          ),
+          inputRow(
+            "Telegram",
+            assetsController.xTelegramAlign(),
+            assetsController.yTelegramAlign(),
+            assetsController.scaleTelegram(),
+            assetsController.alphaTelegram(),
+            assetsController.angleTelegram(),
+            assetsController.seqTelegram(),
+          ),
+          inputRow(
+            "Chrome",
+            assetsController.xChromeAlign(),
+            assetsController.yChromeAlign(),
+            assetsController.scaleChrome(),
+            assetsController.alphaChrome(),
+            assetsController.angleChrome(),
+            assetsController.seqChrome(),
+          ),
+          inputRow(
+            "Dialer",
+            assetsController.xDialerAlign(),
+            assetsController.yDialerAlign(),
+            assetsController.scaleDialer(),
+            assetsController.alphaDialer(),
+            assetsController.angleDialer(),
+            assetsController.seqDialer(),
+          ),
+          inputRow(
+            "Contact",
+            assetsController.xContactAlign(),
+            assetsController.yContactAlign(),
+            assetsController.scaleContact(),
+            assetsController.alphaContact(),
+            assetsController.angleContact(),
+            assetsController.seqContact(),
+          ),
+          inputRow(
+            "Themes",
+            assetsController.xThemesAlign(),
+            assetsController.yThemesAlign(),
+            assetsController.scaleThemes(),
+            assetsController.alphaThemes(),
+            assetsController.angleThemes(),
+            assetsController.seqThemes(),
+          ),
+          inputRow(
+            "Settings",
+            assetsController.xSettingsAlign(),
+            assetsController.ySettingsAlign(),
+            assetsController.scaleSettings(),
+            assetsController.alphaSettings(),
+            assetsController.angleSettings(),
+            assetsController.seqSettings(),
+          ),
+          inputRow(
+            "Camera",
+            assetsController.xCamAlign(),
+            assetsController.yCamAlign(),
+            assetsController.scaleCam(),
+            assetsController.alphaCam(),
+            assetsController.angleCam(),
+            assetsController.seqCam(),
+          ),
+          inputRow(
+            "Music",
+            assetsController.xMusicAlign(),
+            assetsController.yMusicAlign(),
+            assetsController.scaleMusic(),
+            assetsController.alphaMusic(),
+            assetsController.angleMusic(),
+            assetsController.seqMusic(),
+          ),
+        ],
+      ),
+    ];
+
+    return FluentApp(
+      debugShowCheckedModeBanner: false,
+      home: FluentTheme(
+        data: ThemeData(
+          navigationPaneTheme: NavigationPaneThemeData(
+              labelPadding: EdgeInsets.only(left: 10),
+              iconPadding: EdgeInsets.only(left: 10)),
+          brightness: Brightness.dark,
+          scaffoldBackgroundColor: const Color(0xFF201B2F),
+          micaBackgroundColor: const Color(0xFF201B2F),
+          accentColor: magenta,
+          inactiveColor: Colors.white,
+          activeColor: const Color(0xffDD4C75),
+          scrollbarTheme: const ScrollbarThemeData(
+            thickness: 5,
+            hoveringThickness: 10,
+            scrollbarColor: Color.fromARGB(92, 221, 76, 117),
+            scrollbarPressingColor: Color(0xffDD4C75),
+            backgroundColor: Color(0xffDD4C75),
+          ),
+        ),
+        child: NavigationView(
+            pane: NavigationPane(
+              /// The current selected index
+              selected: index,
+              footerItems: [
+                PaneItem(
+                  icon: IconButton(
+                      icon: const Icon(FluentIcons.home),
+                      onPressed: () async {
+                        getTooltip('Theme has not saved', context);
+                        // restart app
+                        Get.back();
+                      }),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 30.0),
-                    child: RotatedBox(
-                      quarterTurns: 3,
-                      child: Text(
-                        themeController.name.string,
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                PaneItem(
+                  icon: IconButton(
+                      icon: const Icon(FluentIcons.save),
+                      onPressed: () {
+                        updateData();
+                        SaveXml.saveXml(themeController.rootPath.string);
+                        getTooltip('Saved successfully', context);
+                      }),
+                ),
+                PaneItem(
+                  icon: IconButton(
+                      icon: const Icon(FluentIcons.code),
+                      onPressed: () async {
+                        updateData();
+                        SaveXml.saveXml(themeController.rootPath.string);
+                        getTooltip('Saved successfully', context);
+                        launch(themeController.rootPath.string +
+                            "\\lockscreen\\advance\\manifest.xml");
+                      }),
+                ),
+                PaneItem(
+                  icon: IconButton(
+                      icon: const Icon(FluentIcons.folder),
+                      onPressed: () async {
+                        launch(themeController.rootPath.string +
+                            "\\lockscreen\\advance");
+                      }),
+                ),
+                PaneItem(
+                  icon: IconButton(
+                      icon: const Icon(FluentIcons.brush),
+                      onPressed: () async {
+                        launch(
+                            themeController.rootPath.string + "\\icons\\res");
+                      }),
+                ),
+                PaneItem(
+                  icon: IconButton(
+                      icon: const Icon(FluentIcons.machine_learning),
+                      onPressed: () {
+                        launch("E:\\Xiaomi Contract\\LOCKSCREEN");
+                      }),
+                ),
+              ],
+              items: [
+                PaneItem(
+                    icon: const Icon(FluentIcons.clock),
+                    title: const Text('TIME'),
+                    mouseCursor: SystemMouseCursors.click),
+                PaneItem(
+                    icon: const Icon(FluentIcons.cloud_weather),
+                    title: const Text('OTHER'),
+                    mouseCursor: SystemMouseCursors.click),
+                PaneItem(
+                    icon: const Icon(FluentIcons.music_note),
+                    title: const Text('MUSIC'),
+                    mouseCursor: SystemMouseCursors.click),
+                PaneItem(
+                    icon: const Icon(FluentIcons.app_icon_default),
+                    title: const Text('APPS'),
+                    mouseCursor: SystemMouseCursors.click),
+              ],
+
+              /// Called whenever the current index changes
+              onChanged: (i) => setState(() => index = i),
+              displayMode: PaneDisplayMode.top,
+            ),
+            content: Padding(
+              padding: const EdgeInsets.only(
+                  top: 0, left: 20, right: 20, bottom: 10),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 30.0),
+                          child: RotatedBox(
+                            quarterTurns: 3,
+                            child: Text(
+                              themeController.name.string,
+                              style: const TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
+                        ThemeMainStack(),
+                      ],
+                    ),
+                    // textfield for offsets
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 20),
+                      child: SingleChildScrollView(
+                        child: SizedBox(
+                          width: 550,
+                          child: pages[index],
+                        ),
                       ),
                     ),
-                  ),
-                  ThemeMainStack(),
-                ],
-              ),
-            ],
-          ),
-
-          // textfield for offsets
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 20),
-            child: SingleChildScrollView(
-              child: SizedBox(
-                width: 550,
-                child: Column(
-                  children: [
-                    inputRow(
-                        "Hours",
-                        assetsController.x1Align(),
-                        assetsController.y1Align(),
-                        assetsController.scale1(),
-                        assetsController.alpha1(),
-                        assetsController.angle1(),
-                        assetsController.seq1()),
-                    inputRow(
-                        "Minutes",
-                        assetsController.x2Align(),
-                        assetsController.y2Align(),
-                        assetsController.scale2(),
-                        assetsController.alpha2(),
-                        assetsController.angle2(),
-                        assetsController.seq2()),
-                    inputRow(
-                        "Seconds",
-                        assetsController.x3Align(),
-                        assetsController.y3Align(),
-                        assetsController.scale3(),
-                        assetsController.alpha3(),
-                        assetsController.angle3(),
-                        assetsController.seq3()),
-                    inputRow(
-                        "Time Dot",
-                        assetsController.xDotAlign(),
-                        assetsController.yDotAlign(),
-                        assetsController.scaleDot(),
-                        assetsController.alphaDot(),
-                        assetsController.angleDot(),
-                        assetsController.seqDot()),
-                    inputRow(
-                        "AM/PM",
-                        assetsController.xAMAlign(),
-                        assetsController.yAMAlign(),
-                        assetsController.scaleAM(),
-                        assetsController.alphaAM(),
-                        assetsController.angleAM(),
-                        assetsController.seqAM()),
-                    inputRow(
-                        "Week Day",
-                        assetsController.xWeekAlign(),
-                        assetsController.yWeekAlign(),
-                        assetsController.scaleWeek(),
-                        assetsController.alphaWeek(),
-                        assetsController.angleWeek(),
-                        assetsController.seqWeek()),
-                    inputRow(
-                        "Date",
-                        assetsController.xDateAlign(),
-                        assetsController.yDateAlign(),
-                        assetsController.scaleDate(),
-                        assetsController.alphaDate(),
-                        assetsController.angleDate(),
-                        assetsController.seqDate()),
-                    inputRow(
-                        "Month",
-                        assetsController.xMonthAlign(),
-                        assetsController.yMonthAlign(),
-                        assetsController.scaleMonth(),
-                        assetsController.alphaMonth(),
-                        assetsController.angleMonth(),
-                        assetsController.seqMonth()),
-                    inputRow(
-                        "Weather",
-                        assetsController.xTempAlign(),
-                        assetsController.yTempAlign(),
-                        assetsController.scaleTemp(),
-                        assetsController.alphaTemp(),
-                        assetsController.angleTemp(),
-                        assetsController.seqTemp()),
-                    inputRow(
-                        "Weather Icon",
-                        assetsController.xWeatherIconAlign(),
-                        assetsController.yWeatherIconAlign(),
-                        assetsController.scaleWeatherIcon(),
-                        assetsController.alphaWeatherIcon(),
-                        assetsController.angleWeatherIcon(),
-                        assetsController.seqWeatherIcon()),
-                    inputRow(
-                        "Battery",
-                        assetsController.xBtrAlign(),
-                        assetsController.yBtrAlign(),
-                        assetsController.scaleBtr(),
-                        assetsController.alphaBtr(),
-                        assetsController.angleBtr(),
-                        assetsController.seqBtr()),
-                    inputRow(
-                        "Music",
-                        assetsController.xMusicBgAlign(),
-                        assetsController.yMusicBgAlign(),
-                        assetsController.scaleMusicBg(),
-                        assetsController.alphaMusicBg(),
-                        assetsController.angleMusicBg(),
-                        assetsController.seqMusicBg()),
-                    inputRow(
-                        "Prev Btn",
-                        assetsController.xPrevBtnAlign(),
-                        assetsController.yPrevBtnAlign(),
-                        assetsController.scaleBtn(),
-                        assetsController.alphaPrevBtn(),
-                        assetsController.anglePrevBtn(),
-                        assetsController.seqPrevBtn()),
-                    inputRow(
-                        "Next Btn",
-                        assetsController.xNextBtnAlign(),
-                        assetsController.yNextBtnAlign(),
-                        assetsController.scaleBtn(),
-                        assetsController.alphaNextBtn(),
-                        assetsController.angleNextBtn(),
-                        assetsController.seqNextBtn()),
-                    inputRow(
-                      "Analog",
-                      assetsController.xAnalogAlign(),
-                      assetsController.yAnalogAlign(),
-                      assetsController.analogScale(),
-                      assetsController.alphaAnalog(),
-                      assetsController.angleAnalog(),
-                      assetsController.seqAnalog(),
-                    ),
-                    inputRow(
-                      "Facebook",
-                      assetsController.xFbAlign(),
-                      assetsController.yFbAlign(),
-                      assetsController.scaleFb(),
-                      assetsController.alphaFb(),
-                      assetsController.angleFb(),
-                      assetsController.seqFb(),
-                    ),
-                    inputRow(
-                      "Whatsapp",
-                      assetsController.xWpAlign(),
-                      assetsController.yWpAlign(),
-                      assetsController.scaleWp(),
-                      assetsController.alphaWp(),
-                      assetsController.angleWp(),
-                      assetsController.seqWp(),
-                    ),
-                    inputRow(
-                      "Twitter",
-                      assetsController.xTwtAlign(),
-                      assetsController.yTwtAlign(),
-                      assetsController.scaleTwt(),
-                      assetsController.alphaTwt(),
-                      assetsController.angleTwt(),
-                      assetsController.seqTwt(),
-                    ),
-                    inputRow(
-                      "Instagram",
-                      assetsController.xInstaAlign(),
-                      assetsController.yInstaAlign(),
-                      assetsController.scaleInsta(),
-                      assetsController.alphaInsta(),
-                      assetsController.angleInsta(),
-                      assetsController.seqInsta(),
-                    ),
-                    inputRow(
-                      "Telegram",
-                      assetsController.xTelegramAlign(),
-                      assetsController.yTelegramAlign(),
-                      assetsController.scaleTelegram(),
-                      assetsController.alphaTelegram(),
-                      assetsController.angleTelegram(),
-                      assetsController.seqTelegram(),
-                    ),
-                    inputRow(
-                      "Chrome",
-                      assetsController.xChromeAlign(),
-                      assetsController.yChromeAlign(),
-                      assetsController.scaleChrome(),
-                      assetsController.alphaChrome(),
-                      assetsController.angleChrome(),
-                      assetsController.seqChrome(),
-                    ),
-                    inputRow(
-                      "Dialer",
-                      assetsController.xDialerAlign(),
-                      assetsController.yDialerAlign(),
-                      assetsController.scaleDialer(),
-                      assetsController.alphaDialer(),
-                      assetsController.angleDialer(),
-                      assetsController.seqDialer(),
-                    ),
-                    inputRow(
-                      "Contact",
-                      assetsController.xContactAlign(),
-                      assetsController.yContactAlign(),
-                      assetsController.scaleContact(),
-                      assetsController.alphaContact(),
-                      assetsController.angleContact(),
-                      assetsController.seqContact(),
-                    ),
-                    inputRow(
-                      "Themes",
-                      assetsController.xThemesAlign(),
-                      assetsController.yThemesAlign(),
-                      assetsController.scaleThemes(),
-                      assetsController.alphaThemes(),
-                      assetsController.angleThemes(),
-                      assetsController.seqThemes(),
-                    ),
-                    inputRow(
-                      "Settings",
-                      assetsController.xSettingsAlign(),
-                      assetsController.ySettingsAlign(),
-                      assetsController.scaleSettings(),
-                      assetsController.alphaSettings(),
-                      assetsController.angleSettings(),
-                      assetsController.seqSettings(),
-                    ),
-                    inputRow(
-                      "Camera",
-                      assetsController.xCamAlign(),
-                      assetsController.yCamAlign(),
-                      assetsController.scaleCam(),
-                      assetsController.alphaCam(),
-                      assetsController.angleCam(),
-                      assetsController.seqCam(),
-                    ),
-                    inputRow(
-                      "Music",
-                      assetsController.xMusicAlign(),
-                      assetsController.yMusicAlign(),
-                      assetsController.scaleMusic(),
-                      assetsController.alphaMusic(),
-                      assetsController.angleMusic(),
-                      assetsController.seqMusic(),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ]),
-      )),
+                  ]),
+            )),
+      ),
     );
   }
 

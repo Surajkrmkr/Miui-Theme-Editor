@@ -5,9 +5,10 @@ getTooltip(String? str, BuildContext context) {
     context,
     FluentTheme(
       data: ThemeData(
-          tooltipTheme: const TooltipThemeData(
-              showDuration: Duration(seconds: 3),
-              decoration: BoxDecoration(color: Color.fromARGB(255, 0, 0, 0)))),
+        tooltipTheme: const TooltipThemeData(
+          showDuration: Duration(seconds: 3),
+        ),
+      ),
       child: Snackbar(
         content: Text(str!),
       ),
