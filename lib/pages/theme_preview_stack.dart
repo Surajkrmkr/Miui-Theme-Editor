@@ -506,10 +506,10 @@ class ThemeMainStack extends StatelessWidget {
 
               // Chrome pngs
               Positioned(
-                top: getTop(
-                    textBoxController.yChromeAlign(), constants.iconHeight.value),
-                left: getLeft2(
-                    textBoxController.xChromeAlign(), constants.iconHeight.value),
+                top: getTop(textBoxController.yChromeAlign(),
+                    constants.iconHeight.value),
+                left: getLeft2(textBoxController.xChromeAlign(),
+                    constants.iconHeight.value),
                 child: Transform.rotate(
                   angle: getAngle(textBoxController.angleChrome()),
                   child: Transform.scale(
@@ -527,7 +527,8 @@ class ThemeMainStack extends StatelessWidget {
 
               // Fb pngs
               Positioned(
-                top: getTop(textBoxController.yFbAlign(), constants.iconHeight.value),
+                top: getTop(
+                    textBoxController.yFbAlign(), constants.iconHeight.value),
                 left: getLeft2(
                     textBoxController.xFbAlign(), constants.iconHeight.value),
                 child: Transform.rotate(
@@ -547,7 +548,8 @@ class ThemeMainStack extends StatelessWidget {
 
               // Wp pngs
               Positioned(
-                top: getTop(textBoxController.yWpAlign(), constants.iconHeight.value),
+                top: getTop(
+                    textBoxController.yWpAlign(), constants.iconHeight.value),
                 left: getLeft2(
                     textBoxController.xWpAlign(), constants.iconHeight.value),
                 child: Transform.rotate(
@@ -567,8 +569,8 @@ class ThemeMainStack extends StatelessWidget {
 
               // Twt pngs
               Positioned(
-                top:
-                    getTop(textBoxController.yTwtAlign(), constants.iconHeight.value),
+                top: getTop(
+                    textBoxController.yTwtAlign(), constants.iconHeight.value),
                 left: getLeft2(
                     textBoxController.xTwtAlign(), constants.iconHeight.value),
                 child: Transform.rotate(
@@ -588,8 +590,8 @@ class ThemeMainStack extends StatelessWidget {
 
               // Cam pngs
               Positioned(
-                top:
-                    getTop(textBoxController.yCamAlign(), constants.iconHeight.value),
+                top: getTop(
+                    textBoxController.yCamAlign(), constants.iconHeight.value),
                 left: getLeft2(
                     textBoxController.xCamAlign(), constants.iconHeight.value),
                 child: Transform.rotate(
@@ -611,8 +613,8 @@ class ThemeMainStack extends StatelessWidget {
               Positioned(
                 top: getTop(textBoxController.yDialerAlign(),
                     constants.iconHeight.value),
-                left: getLeft2(
-                    textBoxController.xDialerAlign(), constants.iconHeight.value),
+                left: getLeft2(textBoxController.xDialerAlign(),
+                    constants.iconHeight.value),
                 child: Transform.rotate(
                   angle: getAngle(textBoxController.angleDialer()),
                   child: Transform.scale(
@@ -632,8 +634,8 @@ class ThemeMainStack extends StatelessWidget {
               Positioned(
                 top: getTop(textBoxController.yContactAlign(),
                     constants.iconHeight.value),
-                left: getLeft2(
-                    textBoxController.xContactAlign(), constants.iconHeight.value),
+                left: getLeft2(textBoxController.xContactAlign(),
+                    constants.iconHeight.value),
                 child: Transform.rotate(
                   angle: getAngle(textBoxController.angleContact()),
                   child: Transform.scale(
@@ -653,8 +655,8 @@ class ThemeMainStack extends StatelessWidget {
               Positioned(
                 top: getTop(textBoxController.yMusicAlign(),
                     constants.iconHeight.value),
-                left: getLeft2(
-                    textBoxController.xMusicAlign(), constants.iconHeight.value),
+                left: getLeft2(textBoxController.xMusicAlign(),
+                    constants.iconHeight.value),
                 child: Transform.rotate(
                   angle: getAngle(textBoxController.angleMusic()),
                   child: Transform.scale(
@@ -674,8 +676,8 @@ class ThemeMainStack extends StatelessWidget {
               Positioned(
                 top: getTop(textBoxController.yThemesAlign(),
                     constants.iconHeight.value),
-                left: getLeft2(
-                    textBoxController.xThemesAlign(), constants.iconHeight.value),
+                left: getLeft2(textBoxController.xThemesAlign(),
+                    constants.iconHeight.value),
                 child: Transform.rotate(
                   angle: getAngle(textBoxController.angleThemes()),
                   child: Transform.scale(
@@ -695,8 +697,8 @@ class ThemeMainStack extends StatelessWidget {
               Positioned(
                 top: getTop(textBoxController.ySettingsAlign(),
                     constants.iconHeight.value),
-                left: getLeft2(
-                    textBoxController.xSettingsAlign(), constants.iconHeight.value),
+                left: getLeft2(textBoxController.xSettingsAlign(),
+                    constants.iconHeight.value),
                 child: Transform.rotate(
                   angle: getAngle(textBoxController.angleSettings()),
                   child: Transform.scale(
@@ -716,8 +718,8 @@ class ThemeMainStack extends StatelessWidget {
               Positioned(
                 top: getTop(textBoxController.yInstaAlign(),
                     constants.iconHeight.value),
-                left: getLeft2(
-                    textBoxController.xInstaAlign(), constants.iconHeight.value),
+                left: getLeft2(textBoxController.xInstaAlign(),
+                    constants.iconHeight.value),
                 child: Transform.rotate(
                   angle: getAngle(textBoxController.angleInsta()),
                   child: Transform.scale(
@@ -737,8 +739,8 @@ class ThemeMainStack extends StatelessWidget {
               Positioned(
                 top: getTop(textBoxController.yTelegramAlign(),
                     constants.iconHeight.value),
-                left: getLeft2(
-                    textBoxController.xTelegramAlign(), constants.iconHeight.value),
+                left: getLeft2(textBoxController.xTelegramAlign(),
+                    constants.iconHeight.value),
                 child: Transform.rotate(
                   angle: getAngle(textBoxController.angleTelegram()),
                   child: Transform.scale(
@@ -754,7 +756,194 @@ class ThemeMainStack extends StatelessWidget {
                 ),
               ),
 
-              
+              // Calc pngs
+              Positioned(
+                top: getTop(
+                    textBoxController.yCalcAlign(), constants.iconHeight.value),
+                left: getLeft2(
+                    textBoxController.xCalcAlign(), constants.iconHeight.value),
+                child: Transform.rotate(
+                  angle: getAngle(textBoxController.angleCalc()),
+                  child: Transform.scale(
+                    scale: getScale(textBoxController.scaleCalc()),
+                    child: Opacity(
+                      opacity: getAlpha(textBoxController.alphaCalc()),
+                      child: AssetImageWidget(
+                        name: 'icon\\calc',
+                        height: constants.iconHeight.value,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Clock pngs
+              Positioned(
+                top: getTop(textBoxController.yClockAlign(),
+                    constants.iconHeight.value),
+                left: getLeft2(textBoxController.xClockAlign(),
+                    constants.iconHeight.value),
+                child: Transform.rotate(
+                  angle: getAngle(textBoxController.angleClock()),
+                  child: Transform.scale(
+                    scale: getScale(textBoxController.scaleClock()),
+                    child: Opacity(
+                      opacity: getAlpha(textBoxController.alphaClock()),
+                      child: AssetImageWidget(
+                        name: 'icon\\clock',
+                        height: constants.iconHeight.value,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Scanner pngs
+              Positioned(
+                top: getTop(textBoxController.yScannerAlign(),
+                    constants.iconHeight.value),
+                left: getLeft2(textBoxController.xScannerAlign(),
+                    constants.iconHeight.value),
+                child: Transform.rotate(
+                  angle: getAngle(textBoxController.angleScanner()),
+                  child: Transform.scale(
+                    scale: getScale(textBoxController.scaleScanner()),
+                    child: Opacity(
+                      opacity: getAlpha(textBoxController.alphaScanner()),
+                      child: AssetImageWidget(
+                        name: 'icon\\scan',
+                        height: constants.iconHeight.value,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Compass pngs
+              Positioned(
+                top: getTop(textBoxController.yCompassAlign(),
+                    constants.iconHeight.value),
+                left: getLeft2(textBoxController.xCompassAlign(),
+                    constants.iconHeight.value),
+                child: Transform.rotate(
+                  angle: getAngle(textBoxController.angleCompass()),
+                  child: Transform.scale(
+                    scale: getScale(textBoxController.scaleCompass()),
+                    child: Opacity(
+                      opacity: getAlpha(textBoxController.alphaCompass()),
+                      child: AssetImageWidget(
+                        name: 'icon\\compass',
+                        height: constants.iconHeight.value,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Recorder pngs
+              Positioned(
+                top: getTop(textBoxController.yRecorderAlign(),
+                    constants.iconHeight.value),
+                left: getLeft2(textBoxController.xRecorderAlign(),
+                    constants.iconHeight.value),
+                child: Transform.rotate(
+                  angle: getAngle(textBoxController.angleRecorder()),
+                  child: Transform.scale(
+                    scale: getScale(textBoxController.scaleRecorder()),
+                    child: Opacity(
+                      opacity: getAlpha(textBoxController.alphaRecorder()),
+                      child: AssetImageWidget(
+                        name: 'icon\\recorder',
+                        height: constants.iconHeight.value,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Radio pngs
+              Positioned(
+                top: getTop(textBoxController.yRadioAlign(),
+                    constants.iconHeight.value),
+                left: getLeft2(textBoxController.xRadioAlign(),
+                    constants.iconHeight.value),
+                child: Transform.rotate(
+                  angle: getAngle(textBoxController.angleRadio()),
+                  child: Transform.scale(
+                    scale: getScale(textBoxController.scaleRadio()),
+                    child: Opacity(
+                      opacity: getAlpha(textBoxController.alphaRadio()),
+                      child: AssetImageWidget(
+                        name: 'icon\\radio',
+                        height: constants.iconHeight.value,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // File Pngs
+              Positioned(
+                top: getTop(
+                    textBoxController.yFileAlign(), constants.iconHeight.value),
+                left: getLeft2(
+                    textBoxController.xFileAlign(), constants.iconHeight.value),
+                child: Transform.rotate(
+                  angle: getAngle(textBoxController.angleFile()),
+                  child: Transform.scale(
+                    scale: getScale(textBoxController.scaleFile()),
+                    child: Opacity(
+                      opacity: getAlpha(textBoxController.alphaFile()),
+                      child: AssetImageWidget(
+                        name: 'icon\\file',
+                        height: constants.iconHeight.value,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Gallery Pngs
+              Positioned(
+                top: getTop(textBoxController.yGalleryAlign(),
+                    constants.iconHeight.value),
+                left: getLeft2(textBoxController.xGalleryAlign(),
+                    constants.iconHeight.value),
+                child: Transform.rotate(
+                  angle: getAngle(textBoxController.angleGallery()),
+                  child: Transform.scale(
+                    scale: getScale(textBoxController.scaleGallery()),
+                    child: Opacity(
+                      opacity: getAlpha(textBoxController.alphaGallery()),
+                      child: AssetImageWidget(
+                        name: 'icon\\gallery',
+                        height: constants.iconHeight.value,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Security Pngs
+              Positioned(
+                top: getTop(textBoxController.ySecurityAlign(),
+                    constants.iconHeight.value),
+                left: getLeft2(textBoxController.xSecurityAlign(),
+                    constants.iconHeight.value),
+                child: Transform.rotate(
+                  angle: getAngle(textBoxController.angleSecurity()),
+                  child: Transform.scale(
+                    scale: getScale(textBoxController.scaleSecurity()),
+                    child: Opacity(
+                      opacity: getAlpha(textBoxController.alphaSecurity()),
+                      child: AssetImageWidget(
+                        name: 'icon\\security',
+                        height: constants.iconHeight.value,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),

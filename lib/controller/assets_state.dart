@@ -192,6 +192,70 @@ class AssetsController extends GetxController {
   var alphaInsta = TextEditingController(text: '1.0').obs;
   var seqInsta = TextEditingController(text: '0').obs;
 
+  var xCalcAlign = TextEditingController(text: '0.0').obs;
+  var yCalcAlign = TextEditingController(text: '0.0').obs;
+  var scaleCalc = TextEditingController(text: '1.0').obs;
+  var angleCalc = TextEditingController(text: '0.0').obs;
+  var alphaCalc = TextEditingController(text: '1.0').obs;
+  var seqCalc = TextEditingController(text: '0').obs;
+
+  var xClockAlign = TextEditingController(text: '0.0').obs;
+  var yClockAlign = TextEditingController(text: '0.0').obs;
+  var scaleClock = TextEditingController(text: '1.0').obs;
+  var angleClock = TextEditingController(text: '0.0').obs;
+  var alphaClock = TextEditingController(text: '1.0').obs;
+  var seqClock = TextEditingController(text: '0').obs;
+
+  var xRecorderAlign = TextEditingController(text: '0.0').obs;
+  var yRecorderAlign = TextEditingController(text: '0.0').obs;
+  var scaleRecorder = TextEditingController(text: '1.0').obs;
+  var angleRecorder = TextEditingController(text: '0.0').obs;
+  var alphaRecorder = TextEditingController(text: '1.0').obs;
+  var seqRecorder = TextEditingController(text: '0').obs;
+
+  var xCompassAlign = TextEditingController(text: '0.0').obs;
+  var yCompassAlign = TextEditingController(text: '0.0').obs;
+  var scaleCompass = TextEditingController(text: '1.0').obs;
+  var angleCompass = TextEditingController(text: '0.0').obs;
+  var alphaCompass = TextEditingController(text: '1.0').obs;
+  var seqCompass = TextEditingController(text: '0').obs;
+
+  var xFileAlign = TextEditingController(text: '0.0').obs;
+  var yFileAlign = TextEditingController(text: '0.0').obs;
+  var scaleFile = TextEditingController(text: '1.0').obs;
+  var angleFile = TextEditingController(text: '0.0').obs;
+  var alphaFile = TextEditingController(text: '1.0').obs;
+  var seqFile = TextEditingController(text: '0').obs;
+
+  var xRadioAlign = TextEditingController(text: '0.0').obs;
+  var yRadioAlign = TextEditingController(text: '0.0').obs;
+  var scaleRadio = TextEditingController(text: '1.0').obs;
+  var angleRadio = TextEditingController(text: '0.0').obs;
+  var alphaRadio = TextEditingController(text: '1.0').obs;
+  var seqRadio = TextEditingController(text: '0').obs;
+
+  var xScannerAlign = TextEditingController(text: '0.0').obs;
+  var yScannerAlign = TextEditingController(text: '0.0').obs;
+  var scaleScanner = TextEditingController(text: '1.0').obs;
+  var angleScanner = TextEditingController(text: '0.0').obs;
+  var alphaScanner = TextEditingController(text: '1.0').obs;
+  var seqScanner = TextEditingController(text: '0').obs;
+
+  var xGalleryAlign = TextEditingController(text: '0.0').obs;
+  var yGalleryAlign = TextEditingController(text: '0.0').obs;
+  var scaleGallery = TextEditingController(text: '1.0').obs;
+  var angleGallery = TextEditingController(text: '0.0').obs;
+  var alphaGallery = TextEditingController(text: '1.0').obs;
+  var seqGallery = TextEditingController(text: '0').obs;
+
+  var xSecurityAlign = TextEditingController(text: '0.0').obs;
+  var ySecurityAlign = TextEditingController(text: '0.0').obs;
+  var scaleSecurity = TextEditingController(text: '1.0').obs;
+  var angleSecurity = TextEditingController(text: '0.0').obs;
+  var alphaSecurity = TextEditingController(text: '1.0').obs;
+  var seqSecurity = TextEditingController(text: '0').obs;
+
+
   void refreshData() {
     Parser p = Parser();
     fetchedDetails.forEach((key, value) {
@@ -1162,6 +1226,331 @@ class AssetsController extends GetxController {
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
+        case 'xCalcAlign':
+          xCalcAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yCalcAlign':
+          yCalcAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;  
+        case 'scaleCalc':
+          scaleCalc().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleCalc':
+          angleCalc().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaCalc':
+          alphaCalc().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'seqCalc':
+          seqCalc().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xScannerAlign':
+          xScannerAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yScannerAlign':
+          yScannerAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleScanner':
+          scaleScanner().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleScanner':
+          angleScanner().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaScanner':
+          alphaScanner().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'seqScanner':
+          seqScanner().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xClockAlign':
+          xClockAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yClockAlign':
+          yClockAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleClock':
+          scaleClock().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleClock':
+          angleClock().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaClock':
+          alphaClock().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'seqClock':
+          seqClock().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xRecorderAlign':
+          xRecorderAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yRecorderAlign':
+          yRecorderAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleRecorder':
+          scaleRecorder().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleRecorder':
+          angleRecorder().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaRecorder':
+          alphaRecorder().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'seqRecorder':
+          seqRecorder().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xRadioAlign':
+          xRadioAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yRadioAlign':
+          yRadioAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleRadio':
+          scaleRadio().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleRadio':
+          angleRadio().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaRadio':
+          alphaRadio().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'seqRadio':
+          seqRadio().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xCompassAlign':
+          xCompassAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yCompassAlign':
+          yCompassAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleCompass':
+          scaleCompass().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleCompass':
+          angleCompass().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaCompass':
+          alphaCompass().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'seqCompass':
+          seqCompass().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xFileAlign':
+          xFileAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yFileAlign':
+          yFileAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleFile':
+          scaleFile().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleFile':
+          angleFile().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaFile':
+          alphaFile().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'seqFile':
+          seqFile().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xGalleryAlign':
+          xGalleryAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yGalleryAlign':
+          yGalleryAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleGallery':
+          scaleGallery().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleGallery':
+          angleGallery().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaGallery':
+          alphaGallery().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'seqGallery':
+          seqGallery().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xSecurityAlign':
+          xSecurityAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'ySecurityAlign':
+          ySecurityAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleSecurity':
+          scaleSecurity().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleSecurity':
+          angleSecurity().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaSecurity':
+          alphaSecurity().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'seqSecurity':
+          seqSecurity().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        
 
       }
     });
