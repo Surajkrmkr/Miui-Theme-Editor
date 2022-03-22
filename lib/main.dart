@@ -1,4 +1,3 @@
-import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_editor/controller/theme_state.dart';
 import 'package:flutter_editor/model/recent_theme.dart';

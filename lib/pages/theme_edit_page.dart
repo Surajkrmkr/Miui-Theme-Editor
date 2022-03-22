@@ -129,6 +129,14 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
               assetsController.alphaWeatherIcon(),
               assetsController.angleWeatherIcon(),
               assetsController.seqWeatherIcon()),
+          inputRow(
+              "Battery",
+              assetsController.xBtrAlign(),
+              assetsController.yBtrAlign(),
+              assetsController.scaleBtr(),
+              assetsController.alphaBtr(),
+              assetsController.angleBtr(),
+              assetsController.seqBtr()),
         ],
       ),
       Column(
