@@ -504,90 +504,6 @@ class ThemeMainStack extends StatelessWidget {
                 ),
               ),
 
-              // Chrome pngs
-              Positioned(
-                top: getTop(textBoxController.yChromeAlign(),
-                    constants.iconHeight.value),
-                left: getLeft2(textBoxController.xChromeAlign(),
-                    constants.iconHeight.value),
-                child: Transform.rotate(
-                  angle: getAngle(textBoxController.angleChrome()),
-                  child: Transform.scale(
-                    scale: getScale(textBoxController.scaleChrome()),
-                    child: Opacity(
-                      opacity: getAlpha(textBoxController.alphaChrome()),
-                      child: AssetImageWidget(
-                        name: 'icon\\chrome',
-                        height: constants.iconHeight.value,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
-              // Fb pngs
-              Positioned(
-                top: getTop(
-                    textBoxController.yFbAlign(), constants.iconHeight.value),
-                left: getLeft2(
-                    textBoxController.xFbAlign(), constants.iconHeight.value),
-                child: Transform.rotate(
-                  angle: getAngle(textBoxController.angleFb()),
-                  child: Transform.scale(
-                    scale: getScale(textBoxController.scaleFb()),
-                    child: Opacity(
-                      opacity: getAlpha(textBoxController.alphaFb()),
-                      child: AssetImageWidget(
-                        name: 'icon\\fb',
-                        height: constants.iconHeight.value,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
-              // Wp pngs
-              Positioned(
-                top: getTop(
-                    textBoxController.yWpAlign(), constants.iconHeight.value),
-                left: getLeft2(
-                    textBoxController.xWpAlign(), constants.iconHeight.value),
-                child: Transform.rotate(
-                  angle: getAngle(textBoxController.angleWp()),
-                  child: Transform.scale(
-                    scale: getScale(textBoxController.scaleWp()),
-                    child: Opacity(
-                      opacity: getAlpha(textBoxController.alphaWp()),
-                      child: AssetImageWidget(
-                        name: 'icon\\wp',
-                        height: constants.iconHeight.value,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
-              // Twt pngs
-              Positioned(
-                top: getTop(
-                    textBoxController.yTwtAlign(), constants.iconHeight.value),
-                left: getLeft2(
-                    textBoxController.xTwtAlign(), constants.iconHeight.value),
-                child: Transform.rotate(
-                  angle: getAngle(textBoxController.angleTwt()),
-                  child: Transform.scale(
-                    scale: getScale(textBoxController.scaleTwt()),
-                    child: Opacity(
-                      opacity: getAlpha(textBoxController.alphaTwt()),
-                      child: AssetImageWidget(
-                        name: 'icon\\twt',
-                        height: constants.iconHeight.value,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
               // Cam pngs
               Positioned(
                 top: getTop(
@@ -602,48 +518,6 @@ class ThemeMainStack extends StatelessWidget {
                       opacity: getAlpha(textBoxController.alphaCam()),
                       child: AssetImageWidget(
                         name: 'icon\\cam',
-                        height: constants.iconHeight.value,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
-              // Dialer pngs
-              Positioned(
-                top: getTop(textBoxController.yDialerAlign(),
-                    constants.iconHeight.value),
-                left: getLeft2(textBoxController.xDialerAlign(),
-                    constants.iconHeight.value),
-                child: Transform.rotate(
-                  angle: getAngle(textBoxController.angleDialer()),
-                  child: Transform.scale(
-                    scale: getScale(textBoxController.scaleDialer()),
-                    child: Opacity(
-                      opacity: getAlpha(textBoxController.alphaDialer()),
-                      child: AssetImageWidget(
-                        name: 'icon\\dialer',
-                        height: constants.iconHeight.value,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
-              // Contact pngs
-              Positioned(
-                top: getTop(textBoxController.yContactAlign(),
-                    constants.iconHeight.value),
-                left: getLeft2(textBoxController.xContactAlign(),
-                    constants.iconHeight.value),
-                child: Transform.rotate(
-                  angle: getAngle(textBoxController.angleContact()),
-                  child: Transform.scale(
-                    scale: getScale(textBoxController.scaleContact()),
-                    child: Opacity(
-                      opacity: getAlpha(textBoxController.alphaContact()),
-                      child: AssetImageWidget(
-                        name: 'icon\\contact',
                         height: constants.iconHeight.value,
                       ),
                     ),
@@ -714,47 +588,6 @@ class ThemeMainStack extends StatelessWidget {
                 ),
               ),
 
-              // Insta pngs
-              Positioned(
-                top: getTop(textBoxController.yInstaAlign(),
-                    constants.iconHeight.value),
-                left: getLeft2(textBoxController.xInstaAlign(),
-                    constants.iconHeight.value),
-                child: Transform.rotate(
-                  angle: getAngle(textBoxController.angleInsta()),
-                  child: Transform.scale(
-                    scale: getScale(textBoxController.scaleInsta()),
-                    child: Opacity(
-                      opacity: getAlpha(textBoxController.alphaInsta()),
-                      child: AssetImageWidget(
-                        name: 'icon\\insta',
-                        height: constants.iconHeight.value,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-
-              // Telegram pngs
-              Positioned(
-                top: getTop(textBoxController.yTelegramAlign(),
-                    constants.iconHeight.value),
-                left: getLeft2(textBoxController.xTelegramAlign(),
-                    constants.iconHeight.value),
-                child: Transform.rotate(
-                  angle: getAngle(textBoxController.angleTelegram()),
-                  child: Transform.scale(
-                    scale: getScale(textBoxController.scaleTelegram()),
-                    child: Opacity(
-                      opacity: getAlpha(textBoxController.alphaTelegram()),
-                      child: AssetImageWidget(
-                        name: 'icon\\telegram',
-                        height: constants.iconHeight.value,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
 
               // Calc pngs
               Positioned(
