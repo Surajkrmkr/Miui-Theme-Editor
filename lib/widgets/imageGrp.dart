@@ -48,3 +48,24 @@ class AssetImageWidget extends StatelessWidget {
     );
   }
 }
+
+
+class Time2ImageWidget extends StatelessWidget {
+  Time2ImageWidget({
+    Key? key,
+    required this.int1,
+    required this.height,
+  }) : super(key: key);
+
+  final ThemeController themeController = Get.find<ThemeController>();
+  final Constants constants = Get.find<Constants>();
+  final dynamic int1;
+  final double height;
+
+  @override
+  Widget build(BuildContext context) {
+    File image = File(
+        themeController.rootPath.string + "\\" + AssetsDetails.assetsPath(int1));
+    return Image.file(image, height: height * themeController.ratio);
+  }
+}

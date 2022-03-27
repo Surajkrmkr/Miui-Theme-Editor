@@ -60,6 +60,22 @@ class AssetsController extends GetxController {
   var alphaWeek = TextEditingController(text: '1.0').obs;
   var seqWeek = TextEditingController(text: '0').obs;
 
+  var xYearAlign = TextEditingController(text: '0.0').obs;
+  var yYearAlign = TextEditingController(text: '0.0').obs;
+  var scaleYear = TextEditingController(text: '1.0').obs;
+  var angleYear = TextEditingController(text: '0.0').obs;
+  var alphaYear = TextEditingController(text: '1.0').obs;
+  var seqYear = TextEditingController(text: '0').obs;
+
+  var xCalenderAlign = TextEditingController(text: '0.0').obs;
+  var yCalenderAlign = TextEditingController(text: '0.0').obs;
+  var scaleCalender = TextEditingController(text: '1.0').obs;
+  var angleCalender = TextEditingController(text: '0.0').obs;
+  var alphaCalender = TextEditingController(text: '1.0').obs;
+  var diffCalender = TextEditingController(text: '50').obs;
+  var scaleCalWeek = TextEditingController(text: '1.0').obs;
+  var scaleCalDate = TextEditingController(text: '1.0').obs;
+
   var xTempAlign = TextEditingController(text: '0.0').obs;
   var yTempAlign = TextEditingController(text: '0.0').obs;
   var scaleTemp = TextEditingController(text: '1.0').obs;
@@ -198,7 +214,6 @@ class AssetsController extends GetxController {
   var angleSecurity = TextEditingController(text: '0.0').obs;
   var alphaSecurity = TextEditingController(text: '1.0').obs;
   var seqSecurity = TextEditingController(text: '0').obs;
-
 
   void refreshData() {
     Parser p = Parser();
@@ -492,6 +507,90 @@ class AssetsController extends GetxController {
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
+        case 'xYearAlign':
+          xYearAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yYearAlign':
+          yYearAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleYear':
+          scaleYear().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleYear':
+          angleYear().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaYear':
+          alphaYear().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'seqYear':
+          seqYear().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xCalenderAlign':
+          xCalenderAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yCalenderAlign':
+          yCalenderAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleCalender':
+          scaleCalender().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleCalender':
+          angleCalender().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaCalender':
+          alphaCalender().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'diffCalender':
+          diffCalender().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleCalWeek':
+          scaleCalWeek().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleCalDate':
+          scaleCalDate().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
         case 'xTempAlign':
           xTempAlign().text = p
               .parse(value)
@@ -522,7 +621,7 @@ class AssetsController extends GetxController {
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
-        case 'seqTemp': 
+        case 'seqTemp':
           seqTemp().text = p
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
@@ -851,7 +950,7 @@ class AssetsController extends GetxController {
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
-          break;  
+          break;
         case 'yThemesAlign':
           yThemesAlign().text = p
               .parse(value)
@@ -893,7 +992,7 @@ class AssetsController extends GetxController {
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
-          break;  
+          break;
         case 'scaleCalc':
           scaleCalc().text = p
               .parse(value)
@@ -1206,8 +1305,6 @@ class AssetsController extends GetxController {
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
-        
-
       }
     });
   }

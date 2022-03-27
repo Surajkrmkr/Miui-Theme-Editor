@@ -240,7 +240,7 @@ class ThemeMainStack extends StatelessWidget {
                       child: Row(
                         children: [
                           TimeImageWidget(
-                              int1: 'week_2',
+                              int1: 'week_3',
                               height: constants.weekPngHeight(),
                               sequence: double.parse(
                                       textBoxController.seqWeek().value.text)
@@ -286,6 +286,53 @@ class ThemeMainStack extends StatelessWidget {
                 ),
               ),
 
+              // Year pngs
+              Positioned(
+                top: getTop(textBoxController.yYearAlign(),
+                    constants.timePngHeight.value),
+                left: getLeft(textBoxController.xYearAlign(),
+                    constants.timePngWidth.value * 2),
+                child: Transform.rotate(
+                  angle: getAngle(textBoxController.angleYear()),
+                  child: Transform.scale(
+                    scale: getScale(textBoxController.scaleYear()),
+                    child: Opacity(
+                      opacity: getAlpha(textBoxController.alphaYear()),
+                      child: Row(
+                        children: [
+                          TimeImageWidget(
+                              int1: 'time_2',
+                              height: constants.timePngHeight(),
+                              sequence: double.parse(
+                                      textBoxController.seqYear().value.text)
+                                  .toInt()),
+                          SizedBox(width: 10 * themeController.ratio),
+                          TimeImageWidget(
+                              int1: 'time_0',
+                              height: constants.timePngHeight(),
+                              sequence: double.parse(
+                                      textBoxController.seqYear().value.text)
+                                  .toInt()),
+                          TimeImageWidget(
+                              int1: 'time_2',
+                              height: constants.timePngHeight(),
+                              sequence: double.parse(
+                                      textBoxController.seqYear().value.text)
+                                  .toInt()),
+                          SizedBox(width: 10 * themeController.ratio),
+                          TimeImageWidget(
+                              int1: 'time_2',
+                              height: constants.timePngHeight(),
+                              sequence: double.parse(
+                                      textBoxController.seqYear().value.text)
+                                  .toInt()),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
               // Month pngs
               Positioned(
                 top: getTop(textBoxController.yMonthAlign(),
@@ -306,6 +353,76 @@ class ThemeMainStack extends StatelessWidget {
                               sequence: double.parse(
                                       textBoxController.seqMonth().value.text)
                                   .toInt()),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Calender pngs
+              Positioned(
+                top: getTop(textBoxController.yCalenderAlign(), 200),
+                left: getLeft2(textBoxController.xCalenderAlign(), 630),
+                child: Transform.rotate(
+                  angle: getAngle(textBoxController.angleCalender()),
+                  child: Transform.scale(
+                    scale: getScale(textBoxController.scaleCalender()),
+                    child: Opacity(
+                      opacity: getAlpha(textBoxController.alphaCalender()),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              AssetImageWidget(
+                                  name: "calender\\week_0", height: 50),
+                              SizedBox(width: 7 * themeController.ratio),
+                              AssetImageWidget(
+                                  name: "calender\\week_1", height: 50),
+                              SizedBox(width: 7 * themeController.ratio),
+                              AssetImageWidget(
+                                  name: "calender\\week_2_1", height: 50),
+                              SizedBox(width: 7 * themeController.ratio),
+                              AssetImageWidget(
+                                  name: "calender\\week_3", height: 50),
+                              SizedBox(width: 7 * themeController.ratio),
+                              AssetImageWidget(
+                                  name: "calender\\week_4", height: 50),
+                            ],
+                          ),
+                          SizedBox(
+                              height: double.parse(
+                                      textBoxController.diffCalender().text) *
+                                  themeController.ratio),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Time2ImageWidget(
+                                  int1: 'calender\\time_0', height: 70),
+                              Time2ImageWidget(
+                                  int1: 'calender\\time_6', height: 70),
+                              SizedBox(width: 40 * themeController.ratio),
+                              Time2ImageWidget(
+                                  int1: 'calender\\time_0', height: 70),
+                              Time2ImageWidget(
+                                  int1: 'calender\\time_7', height: 70),
+                              SizedBox(width: 40 * themeController.ratio),
+                              Time2ImageWidget(
+                                  int1: 'calender\\time_0_1', height: 70),
+                              Time2ImageWidget(
+                                  int1: 'calender\\time_8_1', height: 70),
+                              SizedBox(width: 40 * themeController.ratio),
+                              Time2ImageWidget(
+                                  int1: 'calender\\time_0', height: 70),
+                              Time2ImageWidget(
+                                  int1: 'calender\\time_9', height: 70),
+                              SizedBox(width: 40 * themeController.ratio),
+                              Time2ImageWidget(
+                                  int1: 'calender\\time_1', height: 70),
+                              Time2ImageWidget(
+                                  int1: 'calender\\time_0', height: 70),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -587,7 +704,6 @@ class ThemeMainStack extends StatelessWidget {
                   ),
                 ),
               ),
-
 
               // Calc pngs
               Positioned(

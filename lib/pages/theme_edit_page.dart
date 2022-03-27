@@ -114,6 +114,14 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
               assetsController.angleMonth(),
               assetsController.seqMonth()),
           inputRow(
+              "Year",
+              assetsController.xYearAlign(),
+              assetsController.yYearAlign(),
+              assetsController.scaleYear(),
+              assetsController.alphaYear(),
+              assetsController.angleYear(),
+              assetsController.seqYear()),
+          inputRow(
               "Weather",
               assetsController.xTempAlign(),
               assetsController.yTempAlign(),
@@ -288,6 +296,19 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
           ),
         ],
       ),
+      Column(
+        children: [
+          inputRow(
+            "Calender",
+            assetsController.xCalenderAlign(),
+            assetsController.yCalenderAlign(),
+            assetsController.scaleCalender(),
+            assetsController.alphaCalender(),
+            assetsController.angleCalender(),
+            assetsController.angleCalender(),
+          ),
+        ],
+      )
     ];
 
     return FluentApp(
@@ -399,8 +420,8 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                             color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
                 PaneItem(
-                    icon: const Icon(FluentIcons.app_icon_default),
-                    title: Text('SOCIAL',
+                    icon: const Icon(FluentIcons.calendar),
+                    title: Text('Calender',
                         style: TextStyle(
                             color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
@@ -592,6 +613,7 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
         "scaleSettings": assetsController.scaleSettings().text,
         "scaleMusic": assetsController.scaleMusic().text,
         "analogScale": assetsController.analogScale().text,
+        "scaleCam": assetsController.scaleCam().text,
         "scaleCalc": assetsController.scaleCalc().text,
         "scaleClock": assetsController.scaleClock().text,
         "scaleSecurity": assetsController.scaleSecurity().text,
@@ -601,6 +623,10 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
         "scaleGallery": assetsController.scaleGallery().text,
         "scaleCompass": assetsController.scaleCompass().text,
         "scaleRecorder": assetsController.scaleRecorder().text,
+        "scaleYear": assetsController.scaleYear().text,
+        "scaleCalender": assetsController.scaleCalender().text,
+        "scaleCalWeek": assetsController.scaleCalWeek().text,
+        "scaleCalDate": assetsController.scaleCalDate().text,
         
         "x1Align": assetsController.x1Align().text,
         "y1Align": assetsController.y1Align().text,
@@ -618,6 +644,10 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
         "yDateAlign": assetsController.yDateAlign().text,
         "xMonthAlign": assetsController.xMonthAlign().text,
         "yMonthAlign": assetsController.yMonthAlign().text,
+        "xYearAlign": assetsController.xYearAlign().text,
+        "yYearAlign": assetsController.yYearAlign().text,
+        "xCalenderAlign": assetsController.xCalenderAlign().text,
+        "yCalenderAlign": assetsController.yCalenderAlign().text,
         "xTempAlign": assetsController.xTempAlign().text,
         "yTempAlign": assetsController.yTempAlign().text,
         "xWeatherIconAlign": assetsController.xWeatherIconAlign().text,
@@ -667,6 +697,8 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
         "angleWeek": assetsController.angleWeek().text,
         "angleDate": assetsController.angleDate().text,
         "angleMonth": assetsController.angleMonth().text,
+        "angleYear": assetsController.angleYear().text,
+        "angleCalender": assetsController.angleCalender().text,
         "angleTemp": assetsController.angleTemp().text,
         "angleWeatherIcon": assetsController.angleWeatherIcon().text,
         "angleBtr": assetsController.angleBtr().text,
@@ -696,6 +728,8 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
         "alphaWeek": assetsController.alphaWeek().text,
         "alphaDate": assetsController.alphaDate().text,
         "alphaMonth": assetsController.alphaMonth().text,
+        "alphaYear": assetsController.alphaYear().text,
+        "alphaCalender": assetsController.alphaCalender().text,
         "alphaTemp": assetsController.alphaTemp().text,
         "alphaWeatherIcon": assetsController.alphaWeatherIcon().text,
         "alphaBtr": assetsController.alphaBtr().text,
@@ -746,6 +780,7 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
         "seqCompass": assetsController.seqCompass().text,
         "seqFile": assetsController.seqFile().text,
 
+        "diffCalender": assetsController.diffCalender().text,
 
       });
     });
