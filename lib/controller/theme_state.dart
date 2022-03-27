@@ -6,7 +6,7 @@ class ThemeController extends GetxController {
   var wallPath = ''.obs;
   var name = ''.obs;
   var rootPath = ''.obs;
-  double ratio = (Constants.actualHeight / 2340);
+  static double ratio = (Constants.actualHeight / 2340);
 
   setthemeDetails() {
     name.value = wallPath.string.split('\\').reversed.toList()[2];

@@ -23,7 +23,7 @@ class TimeImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     File image = File(
         themeController.rootPath.string + "\\" + AssetsDetails.timePath(int1,sequence));
-    return Image.file(image, height: height * themeController.ratio);
+    return Image.file(image, height: height * ThemeController.ratio);
   }
 }
 
@@ -44,7 +44,7 @@ class AssetImageWidget extends StatelessWidget {
         themeController.rootPath.string + "\\" + AssetsDetails.assetsPath(name));
     return Image.file(
       image,
-      height: height * themeController.ratio,
+      height: height * ThemeController.ratio,
     );
   }
 }
@@ -66,6 +66,6 @@ class Time2ImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     File image = File(
         themeController.rootPath.string + "\\" + AssetsDetails.assetsPath(int1));
-    return Image.file(image, height: height * themeController.ratio);
+    return Image.file(image, height: height * ThemeController.ratio);
   }
 }

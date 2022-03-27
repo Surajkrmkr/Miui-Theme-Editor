@@ -124,6 +124,15 @@ class AssetsController extends GetxController {
   var alphaAnalog = TextEditingController(text: '1.0').obs;
   var seqAnalog = TextEditingController(text: '0').obs;
 
+  var lockNormal = true.obs;
+  var lockPress = false.obs;
+  var lockSlide = false.obs;
+  var lockSlideDown = TextEditingController(text: '0').obs;
+  var lockSideUnlLeft = TextEditingController(text: '0').obs;
+  var scaleLockPress = TextEditingController(text: '1.0').obs;
+  var xLockPressAlign = TextEditingController(text: '0.0').obs;
+  var yLockPressAlign = TextEditingController(text: '0.0').obs;
+
   var xCamAlign = TextEditingController(text: '0.0').obs;
   var yCamAlign = TextEditingController(text: '0.0').obs;
   var scaleCam = TextEditingController(text: '1.0').obs;
@@ -869,6 +878,45 @@ class AssetsController extends GetxController {
           break;
         case 'seqAnalog':
           seqAnalog().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'lockNormal':
+          lockNormal.value = value == '1' ? true : false;
+          break;
+        case 'lockPress':
+          lockPress.value = value == '1' ? true : false;
+          break;
+        case 'lockSlider':
+          lockSlide.value = value == '1' ? true : false;
+          break;
+        case 'lockSlideDown':
+          lockSlideDown().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'lockSideUnlLeft':
+          lockSideUnlLeft().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleLockPress':
+          scaleLockPress().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xLockPressAlign':
+          xLockPressAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yLockPressAlign':
+          yLockPressAlign().text = p
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();

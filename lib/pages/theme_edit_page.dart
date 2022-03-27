@@ -4,6 +4,7 @@ import 'package:flutter_editor/controller/assets_state.dart';
 import 'package:flutter_editor/controller/theme_state.dart';
 import 'package:flutter_editor/pages/homepage.dart';
 import 'package:flutter_editor/pages/theme_preview_stack.dart';
+import 'package:flutter_editor/widgets/grid.dart';
 import 'package:flutter_editor/widgets/save.dart';
 import 'package:flutter_editor/widgets/tooltip.dart';
 import 'package:get/get.dart';
@@ -22,11 +23,23 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
   final ThemeController themeController = Get.find();
   final AssetsController assetsController = Get.put(AssetsController());
   int index = 0;
+  bool isRulerOpen = false;
+  int unlockIndex = 0;
+  final List<String> radioButtons = <String>[
+    'Normal',
+    'Slider',
+    'Tap',
+  ];
   @override
   void initState() {
     setState(() {
       fetchedDetails = SaveXml.load(themeController.rootPath.string);
       assetsController.refreshData();
+      unlockIndex = assetsController.lockNormal.value
+          ? 0
+          : assetsController.lockSlide.value
+              ? 1
+              : 2;
     });
     super.initState();
   }
@@ -305,8 +318,53 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
             assetsController.scaleCalender(),
             assetsController.alphaCalender(),
             assetsController.angleCalender(),
-            assetsController.angleCalender(),
+            assetsController.diffCalender(),
           ),
+        ],
+      ),
+      Column(
+        children: [
+          Row(
+            children: List.generate(radioButtons.length, (index) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: RadioButton(
+                  checked: unlockIndex == index,
+                  onChanged: (value) => setState(() {
+                    unlockIndex = index;
+                    if (index == 0) {
+                      assetsController.lockNormal.value = true;
+                      assetsController.lockSlide.value = false;
+                      assetsController.lockPress.value = false;
+                    } else if (index == 1) {
+                      assetsController.lockNormal.value = false;
+                      assetsController.lockSlide.value = true;
+                      assetsController.lockPress.value = false;
+                    } else {
+                      assetsController.lockNormal.value = false;
+                      assetsController.lockSlide.value = false;
+                      assetsController.lockPress.value = true;
+                    }
+                  }),
+                  content: Text(radioButtons[index]),
+                ),
+              );
+            }),
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          lockRow(
+            "Slider / Unlock Icon",
+            assetsController.lockSlideDown(),
+            assetsController.lockSideUnlLeft(),
+            assetsController.lockSlideDown(),
+          ),
+          lockRow(
+              "Press Icon",
+              assetsController.xLockPressAlign(),
+              assetsController.yLockPressAlign(),
+              assetsController.scaleLockPress())
         ],
       )
     ];
@@ -339,6 +397,15 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
               /// The current selected index
               selected: index,
               footerItems: [
+                PaneItem(
+                    icon: RadioButton(
+                        content: const Text("Ruler"),
+                        checked: isRulerOpen,
+                        onChanged: (val) {
+                          setState(() {
+                            isRulerOpen = val;
+                          });
+                        })),
                 PaneItem(
                   icon: IconButton(
                       icon: const Icon(FluentIcons.home),
@@ -414,14 +481,20 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                             color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
                 PaneItem(
-                    icon: const Icon(FluentIcons.all_apps),
-                    title: Text('SYSTEM',
+                    icon: const Icon(FluentIcons.power_apps),
+                    title: Text('APPS',
                         style: TextStyle(
                             color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
                 PaneItem(
                     icon: const Icon(FluentIcons.calendar),
                     title: Text('Calender',
+                        style: TextStyle(
+                            color: darkMode ? Colors.white : Colors.black)),
+                    mouseCursor: SystemMouseCursors.click),
+                PaneItem(
+                    icon: const Icon(FluentIcons.lock),
+                    title: Text('Lock Mode',
                         style: TextStyle(
                             color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
@@ -452,6 +525,7 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                           ),
                         ),
                         ThemeMainStack(),
+                        isRulerOpen ? const GridLines() : Container(),
                       ],
                     ),
                     // textfield for offsets
@@ -588,6 +662,83 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
     );
   }
 
+  lockRow(header, xController, yController, sController) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            header,
+            style: const TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 80,
+                  child: TextBox(
+                    controller: xController,
+                    placeholder: 'x-axis',
+                    keyboardType: TextInputType.number,
+                    onChanged: (e) {
+                      setState(() {
+                        if (e.isEmpty) {
+                          xController.text = 0.0.toString();
+                        }
+                      });
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12.0),
+                  child: SizedBox(
+                    width: 80,
+                    child: TextBox(
+                      controller: yController,
+                      placeholder: 'y-axis',
+                      keyboardType: TextInputType.number,
+                      onChanged: (e) {
+                        setState(() {
+                          if (e.isEmpty) {
+                            yController.text = 0.0.toString();
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12.0),
+                  child: SizedBox(
+                    width: 80,
+                    child: TextBox(
+                      controller: sController,
+                      placeholder: 'scale',
+                      keyboardType: TextInputType.number,
+                      onChanged: (e) {
+                        setState(() {
+                          if (e.isEmpty) {
+                            sController.text = 1.0.toString();
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   void reload() {
     setState(() {});
   }
@@ -627,7 +778,6 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
         "scaleCalender": assetsController.scaleCalender().text,
         "scaleCalWeek": assetsController.scaleCalWeek().text,
         "scaleCalDate": assetsController.scaleCalDate().text,
-        
         "x1Align": assetsController.x1Align().text,
         "y1Align": assetsController.y1Align().text,
         "x2Align": assetsController.x2Align().text,
@@ -688,7 +838,6 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
         "yCompassAlign": assetsController.yCompassAlign().text,
         "xFileAlign": assetsController.xFileAlign().text,
         "yFileAlign": assetsController.yFileAlign().text,
-        
         "angle1": assetsController.angle1().text,
         "angle2": assetsController.angle2().text,
         "angle3": assetsController.angle3().text,
@@ -719,7 +868,6 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
         "angleRecorder": assetsController.angleRecorder().text,
         "angleCompass": assetsController.angleCompass().text,
         "angleFile": assetsController.angleFile().text,
-        
         "alpha1": assetsController.alpha1().text,
         "alpha2": assetsController.alpha2().text,
         "alpha3": assetsController.alpha3().text,
@@ -750,7 +898,6 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
         "alphaRecorder": assetsController.alphaRecorder().text,
         "alphaCompass": assetsController.alphaCompass().text,
         "alphaFile": assetsController.alphaFile().text,
-
         "seq1": assetsController.seq1().text,
         "seq2": assetsController.seq2().text,
         "seq3": assetsController.seq3().text,
@@ -779,9 +926,15 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
         "seqRecorder": assetsController.seqRecorder().text,
         "seqCompass": assetsController.seqCompass().text,
         "seqFile": assetsController.seqFile().text,
-
         "diffCalender": assetsController.diffCalender().text,
-
+        "lockNormal": assetsController.lockNormal.value ? '1' : '0',
+        "lockPress": assetsController.lockPress.value ? '1' : '0',
+        "lockSlide": assetsController.lockSlide.value ? '1' : '0',
+        "lockSlideDown": assetsController.lockSlideDown().text,
+        "lockSideUnlLeft": assetsController.lockSideUnlLeft().text,
+        "scaleLockPress": assetsController.scaleLockPress().text,
+        "xLockPressAlign": assetsController.xLockPressAlign().text,
+        "yLockPressAlign": assetsController.yLockPressAlign().text,
       });
     });
   }
