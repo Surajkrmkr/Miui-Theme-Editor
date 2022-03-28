@@ -58,57 +58,60 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(top: 30.0, bottom: 30),
                   child: SizedBox(
                     width: 300,
-                    child: GridView.builder(
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 20,
-                          mainAxisSpacing: 20,
-                          childAspectRatio: 2 / 4,
-                        ),
-                        itemCount: recentThemeController.recentList.length,
-                        itemBuilder: (context, i) {
-                          var themeData = recentThemeController.recentList[
-                              recentThemeController.recentList.length - i - 1];
-                          return GestureDetector(
-                            onTap: () {
-                              themeController.rootPath.value =
-                                  themeData.themePath;
-                              themeController.setDragThemeDetails();
-                              getTooltip(
-                                  "${themeController.name.string} imported",
-                                  context);
-                              Get.to(() => const ThemeEditPage());
-                            },
-                            child: MouseRegion(
-                              cursor: SystemMouseCursors.click,
-                              child: Container(
-                                alignment: Alignment.bottomCenter,
-                                padding: const EdgeInsets.only(bottom: 20),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  image: DecorationImage(
-                                      image:
-                                          FileImage(File(themeData.imagePath)),
-                                      fit: BoxFit.cover),
-                                ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 20,
+                            mainAxisSpacing: 20,
+                            childAspectRatio: 2 / 4,
+                          ),
+                          itemCount: recentThemeController.recentList.length,
+                          itemBuilder: (context, i) {
+                            var themeData = recentThemeController.recentList[
+                                recentThemeController.recentList.length - i - 1];
+                            return GestureDetector(
+                              onTap: () {
+                                themeController.rootPath.value =
+                                    themeData.themePath;
+                                themeController.setDragThemeDetails();
+                                getTooltip(
+                                    "${themeController.name.string} imported",
+                                    context);
+                                Get.to(() => const ThemeEditPage());
+                              },
+                              child: MouseRegion(
+                                cursor: SystemMouseCursors.click,
                                 child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 5),
+                                  alignment: Alignment.bottomCenter,
+                                  padding: const EdgeInsets.only(bottom: 20),
                                   decoration: BoxDecoration(
-                                    color: Colors.black.withOpacity(0.1),
-                                    borderRadius: BorderRadius.circular(10),
+                                    borderRadius: BorderRadius.circular(20),
+                                    image: DecorationImage(
+                                        image:
+                                            FileImage(File(themeData.imagePath)),
+                                        fit: BoxFit.cover),
                                   ),
-                                  child: Text(
-                                    themeData.name,
-                                    style: const TextStyle(
-                                        fontSize: 16, color: Colors.white),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    decoration: BoxDecoration(
+                                      color: Colors.black.withOpacity(0.1),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Text(
+                                      themeData.name,
+                                      style: const TextStyle(
+                                          fontSize: 16, color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        }),
+                            );
+                          }),
+                    ),
                   ),
                 );
               }),

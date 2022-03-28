@@ -324,32 +324,35 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
       ),
       Column(
         children: [
-          Row(
-            children: List.generate(radioButtons.length, (index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: RadioButton(
-                  checked: unlockIndex == index,
-                  onChanged: (value) => setState(() {
-                    unlockIndex = index;
-                    if (index == 0) {
-                      assetsController.lockNormal.value = true;
-                      assetsController.lockSlide.value = false;
-                      assetsController.lockPress.value = false;
-                    } else if (index == 1) {
-                      assetsController.lockNormal.value = false;
-                      assetsController.lockSlide.value = true;
-                      assetsController.lockPress.value = false;
-                    } else {
-                      assetsController.lockNormal.value = false;
-                      assetsController.lockSlide.value = false;
-                      assetsController.lockPress.value = true;
-                    }
-                  }),
-                  content: Text(radioButtons[index]),
-                ),
-              );
-            }),
+          MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: Row(
+              children: List.generate(radioButtons.length, (index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: RadioButton(
+                    checked: unlockIndex == index,
+                    onChanged: (value) => setState(() {
+                      unlockIndex = index;
+                      if (index == 0) {
+                        assetsController.lockNormal.value = true;
+                        assetsController.lockSlide.value = false;
+                        assetsController.lockPress.value = false;
+                      } else if (index == 1) {
+                        assetsController.lockNormal.value = false;
+                        assetsController.lockSlide.value = true;
+                        assetsController.lockPress.value = false;
+                      } else {
+                        assetsController.lockNormal.value = false;
+                        assetsController.lockSlide.value = false;
+                        assetsController.lockPress.value = true;
+                      }
+                    }),
+                    content: Text(radioButtons[index]),
+                  ),
+                );
+              }),
+            ),
           ),
           const SizedBox(
             height: 40,
@@ -451,13 +454,6 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                             themeController.rootPath.string + "\\icons\\res");
                       }),
                 ),
-                PaneItem(
-                  icon: IconButton(
-                      icon: const Icon(FluentIcons.machine_learning),
-                      onPressed: () {
-                        launch("E:\\Xiaomi Contract\\LOCKSCREEN");
-                      }),
-                ),
               ],
               items: [
                 PaneItem(
@@ -487,14 +483,14 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                             color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
                 PaneItem(
-                    icon: const Icon(FluentIcons.calendar),
-                    title: Text('Calender',
+                    icon: const Icon(FluentIcons.app_icon_secure),
+                    title: Text('FEATURES',
                         style: TextStyle(
                             color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
                 PaneItem(
                     icon: const Icon(FluentIcons.lock),
-                    title: Text('Lock Mode',
+                    title: Text('LOCK MODE',
                         style: TextStyle(
                             color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),

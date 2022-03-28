@@ -883,13 +883,13 @@ class AssetsController extends GetxController {
               .toString();
           break;
         case 'lockNormal':
-          lockNormal.value = value == '1' ? true : false;
+          lockNormal.value = (value == '1') ? true : false;
           break;
         case 'lockPress':
-          lockPress.value = value == '1' ? true : false;
+          lockPress.value = (value == '1') ? true : false;
           break;
-        case 'lockSlider':
-          lockSlide.value = value == '1' ? true : false;
+        case 'lockSlide':
+          lockSlide.value = (value == '1') ? true : false;
           break;
         case 'lockSlideDown':
           lockSlideDown().text = p
