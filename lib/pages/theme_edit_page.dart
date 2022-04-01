@@ -397,11 +397,10 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
         ),
         child: NavigationView(
             pane: NavigationPane(
-              /// The current selected index
               selected: index,
               footerItems: [
-                PaneItem(
-                    icon: RadioButton(
+                PaneItemHeader(
+                    header: ToggleSwitch(
                         content: const Text("Ruler"),
                         checked: isRulerOpen,
                         onChanged: (val) {
@@ -409,55 +408,70 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                             isRulerOpen = val;
                           });
                         })),
-                PaneItem(
-                  icon: IconButton(
-                      icon: const Icon(FluentIcons.home),
-                      onPressed: () async {
-                        getTooltip('Theme has not saved', context);
-                        // restart app
-                        Get.back();
-                      }),
+                PaneItemHeader(
+                  header: Tooltip(
+                    message: "Home",
+                    child: IconButton(
+                        icon: const Icon(FluentIcons.home),
+                        onPressed: () async {
+                          getTooltip('Theme has not saved', context);
+                          // restart app
+                          Get.back();
+                        }),
+                  ),
                 ),
-                PaneItem(
-                  icon: IconButton(
-                      icon: const Icon(FluentIcons.save),
-                      onPressed: () {
-                        updateData();
-                        SaveXml.saveXml(themeController.rootPath.string);
-                        getTooltip('Saved successfully', context);
-                      }),
+                PaneItemHeader(
+                  header: Tooltip(
+                    message: "Save",
+                    child: IconButton(
+                        icon: const Icon(FluentIcons.save),
+                        onPressed: () {
+                          updateData();
+                          SaveXml.saveXml(themeController.rootPath.string);
+                          getTooltip('Saved successfully', context);
+                        }),
+                  ),
                 ),
-                PaneItem(
-                  icon: IconButton(
-                      icon: const Icon(FluentIcons.code),
-                      onPressed: () async {
-                        updateData();
-                        SaveXml.saveXml(themeController.rootPath.string);
-                        getTooltip('Saved successfully', context);
-                        launch(themeController.rootPath.string +
-                            "\\lockscreen\\advance\\manifest.xml");
-                      }),
+                PaneItemHeader(
+                  header: Tooltip(
+                    message: "Manifest file",
+                    child: IconButton(
+                        icon: const Icon(FluentIcons.code),
+                        onPressed: () async {
+                          updateData();
+                          SaveXml.saveXml(themeController.rootPath.string);
+                          getTooltip('Saved successfully', context);
+                          launch(themeController.rootPath.string +
+                              "\\lockscreen\\advance\\manifest.xml");
+                        }),
+                  ),
                 ),
-                PaneItem(
-                  icon: IconButton(
-                      icon: const Icon(FluentIcons.folder),
-                      onPressed: () async {
-                        launch(themeController.rootPath.string +
-                            "\\lockscreen\\advance");
-                      }),
+                PaneItemHeader(
+                  header: Tooltip(
+                    message: "Lockscreen folder",
+                    child: IconButton(
+                        icon: const Icon(FluentIcons.folder),
+                        onPressed: () async {
+                          launch(themeController.rootPath.string +
+                              "\\lockscreen\\advance");
+                        }),
+                  ),
                 ),
-                PaneItem(
-                  icon: IconButton(
-                      icon: const Icon(FluentIcons.brush),
-                      onPressed: () async {
-                        launch(
-                            themeController.rootPath.string + "\\icons\\res");
-                      }),
+                PaneItemHeader(
+                  header: Tooltip(
+                    message: "Icon folder",
+                    child: IconButton(
+                        icon: const Icon(FluentIcons.brush),
+                        onPressed: () async {
+                          launch(
+                              themeController.rootPath.string + "\\icons\\res");
+                        }),
+                  ),
                 ),
               ],
               items: [
                 PaneItem(
-                    icon: const Icon(FluentIcons.clock),
+                    icon: const Icon(FluentIcons.skype_circle_clock),
                     title: Text(
                       'TIME',
                       style: TextStyle(
@@ -465,32 +479,32 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                     ),
                     mouseCursor: SystemMouseCursors.click),
                 PaneItem(
-                    icon: const Icon(FluentIcons.cloud_weather),
+                    icon: const Icon(FluentIcons.p_o_i_solid),
                     title: Text('OTHER',
                         style: TextStyle(
                             color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
                 PaneItem(
-                    icon: const Icon(FluentIcons.music_note),
+                    icon: const Icon(FluentIcons.music_in_collection_fill),
                     title: Text('MUSIC',
                         style: TextStyle(
                             color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
                 PaneItem(
-                    icon: const Icon(FluentIcons.power_apps),
+                    icon: const Icon(FluentIcons.shape_solid),
                     title: Text('APPS',
                         style: TextStyle(
                             color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
                 PaneItem(
-                    icon: const Icon(FluentIcons.app_icon_secure),
-                    title: Text('FEATURES',
+                    icon: const Icon(FluentIcons.a_t_p_logo),
+                    title: Text('WIDGET',
                         style: TextStyle(
                             color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
                 PaneItem(
-                    icon: const Icon(FluentIcons.lock),
-                    title: Text('LOCK MODE',
+                    icon: const Icon(FluentIcons.flame_solid),
+                    title: Text('LOCK',
                         style: TextStyle(
                             color: darkMode ? Colors.white : Colors.black)),
                     mouseCursor: SystemMouseCursors.click),
@@ -548,110 +562,129 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            header,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                header,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Slider(
+                value: double.parse(xController.text),
+                min: -(Constants.sw / 2),
+                max: Constants.sw / 2,
+                divisions: Constants.sw ~/ 5,
+                onChanged: (e) {
+                  setState(() {
+                    xController.text = e.toString();
+                  });
+                },
+              ),
+              Slider(
+                value: double.parse(yController.text),
+                min: -(Constants.sh / 2),
+                max: Constants.sh / 2,
+                divisions: Constants.sh ~/ 5,
+                onChanged: (e) {
+                  setState(() {
+                    yController.text = e.toString();
+                  });
+                },
+              ),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.only(top: 8.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  width: 80,
-                  child: TextBox(
-                    controller: xController,
-                    placeholder: 'x-axis',
-                    keyboardType: TextInputType.number,
-                    onChanged: (e) {
-                      setState(() {
-                        if (e.isEmpty) {
-                          xController.text = 0.0.toString();
-                        }
-                      });
-                    },
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: 80,
+                    child: TextBox(
+                      controller: xController,
+                      placeholder: 'x-axis',
+                      keyboardType: TextInputType.number,
+                      onChanged: (e) {
+                        setState(() {
+                          if (!e.isNum) {
+                            xController.text = 0.0.toString();
+                          }
+                        });
+                      },
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 80,
-                  child: TextBox(
-                    controller: yController,
-                    placeholder: 'y-axis',
-                    keyboardType: TextInputType.number,
-                    onChanged: (e) {
-                      setState(() {
-                        if (e.isEmpty) {
-                          yController.text = 0.0.toString();
-                        }
-                      });
-                    },
+                  SizedBox(
+                    width: 80,
+                    child: TextBox(
+                      controller: yController,
+                      placeholder: 'y-axis',
+                      keyboardType: TextInputType.number,
+                      onChanged: (e) {
+                        setState(() {
+                          if (!e.isNum) {
+                            yController.text = 0.0.toString();
+                          }
+                        });
+                      },
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 80,
-                  child: TextBox(
-                    controller: sController,
-                    placeholder: 'scale',
-                    keyboardType: TextInputType.number,
-                    onChanged: (e) {
-                      setState(() {
-                        if (e.isEmpty) {
-                          sController.text = 1.0.toString();
-                        }
-                      });
-                    },
+                  SizedBox(
+                    width: 80,
+                    child: TextBox(
+                      controller: sController,
+                      placeholder: 'scale',
+                      keyboardType: TextInputType.number,
+                      onChanged: (e) {
+                        setState(() {
+                          if (!e.isNum) {
+                            sController.text = 1.0.toString();
+                          }
+                        });
+                      },
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 80,
-                  child: TextBox(
-                    controller: aController,
-                    placeholder: 'alpha',
-                    keyboardType: TextInputType.number,
-                    onChanged: (e) {
-                      setState(() {
-                        if (e.isEmpty) {
-                          aController.text = 1.0.toString();
-                        }
-                      });
-                    },
+                  SizedBox(
+                    width: 80,
+                    child: TextBox(
+                      controller: aController,
+                      placeholder: 'alpha',
+                      keyboardType:TextInputType.number,
+                      onChanged: (e) {
+                        double val = double.parse(e);
+                        setState(() {
+                          if (!e.isNum || val < 0 || val > 1) {
+                            aController.text = 1.0.toString();
+                          }
+                        });
+                      },
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 80,
-                  child: TextBox(
-                    controller: rController,
-                    placeholder: 'angle',
-                    keyboardType: TextInputType.number,
-                    onChanged: (e) {
-                      setState(() {
-                        if (e.isEmpty) {
-                          rController.text = 0.0.toString();
-                        }
-                      });
-                    },
+                  SizedBox(
+                    width: 80,
+                    child: TextBox(
+                      controller: rController,
+                      placeholder: 'angle',
+                      keyboardType:TextInputType.number,
+                      onChanged: (e) {
+                        setState(() {
+                          if (!e.isNum) {
+                            rController.text = 0.0.toString();
+                          }
+                        });
+                      },
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 80,
-                  child: TextBox(
-                    controller: sqController,
-                    placeholder: 'sequence',
-                    keyboardType: TextInputType.number,
-                    onChanged: (e) {
-                      setState(() {
-                        if (e.isEmpty) {
-                          sqController.text = 1.0.toString();
-                        }
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
+                    ToggleSwitch(
+                        checked: double.parse(sqController.text) == 1,
+                        onChanged: (val) {
+                          setState(() {
+                            sqController.text = val ? '1.0' : '0.0';
+                          });
+                        })
+                ]),
           ),
         ],
       ),
@@ -931,6 +964,21 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
         "scaleLockPress": assetsController.scaleLockPress().text,
         "xLockPressAlign": assetsController.xLockPressAlign().text,
         "yLockPressAlign": assetsController.yLockPressAlign().text,
+        "scaleText": assetsController.scaleText().text,
+        "alignmentText": "'" + assetsController.alignmentText().text + "'",
+        "songTitle": "'" + assetsController.songTitle().text + "'",
+        "songArtist": "'" + assetsController.songArtist().text + "'",
+        "colorText": "'" + assetsController.colorText().text + "'",
+        "xTextAlign": assetsController.xTextAlign().text,
+        "yTextAlign": assetsController.yTextAlign().text,
+        "scaleCity": assetsController.scaleCity().text,
+        "alphaCity": assetsController.alphaCity().text,
+        "angleCity": assetsController.angleCity().text,
+        "xCityAlign": assetsController.xCityAlign().text,
+        "yCityAlign": assetsController.yCityAlign().text,
+        "cityAlignment": "'" + assetsController.cityAlignment().text + "'",
+        "cityColor": "'" + assetsController.cityColor().text + "'",
+        "nameCity": "'" + assetsController.nameCity().text + "'",
       });
     });
   }

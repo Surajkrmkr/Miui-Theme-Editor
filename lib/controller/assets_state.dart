@@ -117,6 +117,23 @@ class AssetsController extends GetxController {
   var alphaPrevBtn = TextEditingController(text: '1.0').obs;
   var seqPrevBtn = TextEditingController(text: '0').obs;
 
+  var scaleText = TextEditingController(text: '1.0').obs;
+  var alignmentText = TextEditingController(text: 'center').obs;
+  var songTitle = TextEditingController(text: 'Song name').obs;
+  var songArtist = TextEditingController(text: 'Artist').obs;
+  var colorText = TextEditingController(text: '#FF000000').obs;
+  var xTextAlign = TextEditingController(text: '0.0').obs;
+  var yTextAlign = TextEditingController(text: '0.0').obs;
+
+  var scaleCity = TextEditingController(text: '1.0').obs;
+  var alphaCity = TextEditingController(text: '1.0').obs;
+  var angleCity = TextEditingController(text: '0.0').obs;
+  var xCityAlign = TextEditingController(text: '0.0').obs;
+  var yCityAlign = TextEditingController(text: '0').obs;
+  var cityAlignment = TextEditingController(text: 'center').obs;
+  var cityColor = TextEditingController(text: '#FFFFFFFF').obs;
+  var nameCity = TextEditingController(text: 'Cuttack').obs;
+
   var xAnalogAlign = TextEditingController(text: '0.0').obs;
   var yAnalogAlign = TextEditingController(text: '0.0').obs;
   var analogScale = TextEditingController(text: '1.0').obs;
@@ -1352,6 +1369,75 @@ class AssetsController extends GetxController {
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
+          break;
+        case 'scaleText':
+          scaleText().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alignmentText':
+          alignmentText().text = value.toString().replaceAll("'", "");
+          break;
+        case 'xTextAlign':
+          xTextAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yTextAlign':
+          yTextAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'songTitle':
+          songTitle().text = value.toString().replaceAll("'", "");
+          break;
+        case 'songArtist':
+          songArtist().text = value.toString().replaceAll("'", "");
+          break;
+        case 'colorText':
+          colorText().text = value.toString().replaceAll("'", "");
+          break;
+        case 'alphaCity':
+          alphaCity().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleCity':
+          angleCity().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xCityAlign':
+          xCityAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yCityAlign':
+          yCityAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleCity':
+          scaleCity().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'cityColor':
+          cityColor().text = value.toString().replaceAll("'", "");
+          break;
+        case 'cityAlignment':
+          cityAlignment().text = value.toString().replaceAll("'", "");
+          break;
+        case 'nameCity':
+          nameCity().text = value.toString().replaceAll("'", "");
           break;
       }
     });
