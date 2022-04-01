@@ -674,6 +674,38 @@ class ThemeMainStack extends StatelessWidget {
                 ),
               ),
 
+              // Music Info
+              Positioned(
+                top: getTop(textBoxController.yTextAlign(), 50),
+                child: Transform.scale(
+                  scale: getScale(textBoxController.scaleText()),
+                  child: Column(
+                    children: [
+                      Text(
+                        textBoxController.songTitle().value.text,
+                        style: TextStyle(
+                          fontSize: 60 * ThemeController.ratio,
+                          color: Color(int.parse(
+                              "FF${textBoxController.colorText().value.text}",radix: 16)),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50 * ThemeController.ratio,
+                      ),
+                      Text(
+                        textBoxController.songArtist().value.text,
+                        style: TextStyle(
+                          fontSize: 30 * ThemeController.ratio,
+                          color: Color(int.parse(
+                                  "FF${textBoxController.colorText().value.text}",radix: 16))
+                              .withOpacity(0.6),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
               // Analog pngs
               Positioned(
                 top: getTop(textBoxController.yAnalogAlign(),

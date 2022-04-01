@@ -1,3 +1,4 @@
+import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_editor/constants/constants.dart';
 import 'package:flutter_editor/controller/assets_state.dart';
@@ -186,6 +187,17 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
               assetsController.alphaNextBtn(),
               assetsController.angleNextBtn(),
               assetsController.seqNextBtn()),
+          lockRow(
+            "Music Info",
+            assetsController.xTextAlign(),
+            assetsController.yTextAlign(),
+            assetsController.scaleText(),
+          ),
+          musicRow(
+              assetsController.colorText(),
+              assetsController.alignmentText(),
+              assetsController.songTitle(),
+              assetsController.songArtist()),
         ],
       ),
       Column(
@@ -572,27 +584,33 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Slider(
-                value: double.parse(xController.text),
-                min: -(Constants.sw / 2),
-                max: Constants.sw / 2,
-                divisions: Constants.sw ~/ 5,
-                onChanged: (e) {
-                  setState(() {
-                    xController.text = e.toString();
-                  });
-                },
+              MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: Slider(
+                  value: double.parse(xController.text),
+                  min: -(Constants.sw / 2),
+                  max: Constants.sw / 2,
+                  divisions: Constants.sw ~/ 5,
+                  onChanged: (e) {
+                    setState(() {
+                      xController.text = e.toString();
+                    });
+                  },
+                ),
               ),
-              Slider(
-                value: double.parse(yController.text),
-                min: -(Constants.sh / 2),
-                max: Constants.sh / 2,
-                divisions: Constants.sh ~/ 5,
-                onChanged: (e) {
-                  setState(() {
-                    yController.text = e.toString();
-                  });
-                },
+              MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: Slider(
+                  value: double.parse(yController.text),
+                  min: -(Constants.sh / 2),
+                  max: Constants.sh / 2,
+                  divisions: Constants.sh ~/ 5,
+                  onChanged: (e) {
+                    setState(() {
+                      yController.text = e.toString();
+                    });
+                  },
+                ),
               ),
             ],
           ),
@@ -651,7 +669,7 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                     child: TextBox(
                       controller: aController,
                       placeholder: 'alpha',
-                      keyboardType:TextInputType.number,
+                      keyboardType: TextInputType.number,
                       onChanged: (e) {
                         double val = double.parse(e);
                         setState(() {
@@ -667,7 +685,7 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                     child: TextBox(
                       controller: rController,
                       placeholder: 'angle',
-                      keyboardType:TextInputType.number,
+                      keyboardType: TextInputType.number,
                       onChanged: (e) {
                         setState(() {
                           if (!e.isNum) {
@@ -677,13 +695,13 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                       },
                     ),
                   ),
-                    ToggleSwitch(
-                        checked: double.parse(sqController.text) == 1,
-                        onChanged: (val) {
-                          setState(() {
-                            sqController.text = val ? '1.0' : '0.0';
-                          });
-                        })
+                  ToggleSwitch(
+                      checked: double.parse(sqController.text) == 1,
+                      onChanged: (val) {
+                        setState(() {
+                          sqController.text = val ? '1.0' : '0.0';
+                        });
+                      })
                 ]),
           ),
         ],
@@ -764,6 +782,89 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  musicRow(colorText, alignment, title, artist) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 4.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 100,
+              child: TextBox(
+                controller: colorText,
+                placeholder: 'Color',
+                keyboardType: TextInputType.text,
+                onChanged: (e) {
+                  setState(() {
+                    if (e.isEmpty) {
+                      colorText.text = 'FFFFFFFF';
+                    }
+                  });
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 12.0),
+              child: SizedBox(
+                width: 80,
+                child: TextBox(
+                  controller: alignment,
+                  placeholder: 'Alignment',
+                  keyboardType: TextInputType.text,
+                  onChanged: (e) {
+                    setState(() {
+                      if (e.isEmpty) {
+                        alignment.text = 'center';
+                      }
+                    });
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 12.0),
+              child: SizedBox(
+                width: 120,
+                child: TextBox(
+                  controller: title,
+                  placeholder: 'Title',
+                  keyboardType: TextInputType.text,
+                  onChanged: (e) {
+                    setState(() {
+                      if (e.isEmpty) {
+                        title.text = 'Song Name';
+                      }
+                    });
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 12.0),
+              child: SizedBox(
+                width: 120,
+                child: TextBox(
+                  controller: artist,
+                  placeholder: 'Artist',
+                  keyboardType: TextInputType.text,
+                  onChanged: (e) {
+                    setState(() {
+                      if (e.isEmpty) {
+                        artist.text = 'Artist';
+                      }
+                    });
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
