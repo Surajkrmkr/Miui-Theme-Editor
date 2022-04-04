@@ -53,6 +53,13 @@ class AssetsController extends GetxController {
   var alphaMonth = TextEditingController(text: '1.0').obs;
   var seqMonth = TextEditingController(text: '0').obs;
 
+  var xMonthNumAlign = TextEditingController(text: '0.0').obs;
+  var yMonthNumAlign = TextEditingController(text: '0.0').obs;
+  var scaleMonthNum = TextEditingController(text: '1.0').obs;
+  var angleMonthNum = TextEditingController(text: '0.0').obs;
+  var alphaMonthNum = TextEditingController(text: '1.0').obs;
+  var seqMonthNum = TextEditingController(text: '0').obs;
+
   var xWeekAlign = TextEditingController(text: '0.0').obs;
   var yWeekAlign = TextEditingController(text: '0.0').obs;
   var scaleWeek = TextEditingController(text: '1.0').obs;
@@ -118,7 +125,6 @@ class AssetsController extends GetxController {
   var seqPrevBtn = TextEditingController(text: '0').obs;
 
   var scaleText = TextEditingController(text: '1.0').obs;
-  var alignmentText = TextEditingController(text: 'center').obs;
   var songTitle = TextEditingController(text: 'Song name').obs;
   var songArtist = TextEditingController(text: 'Artist').obs;
   var colorText = TextEditingController(text: '#FF000000').obs;
@@ -493,6 +499,42 @@ class AssetsController extends GetxController {
           break;
         case 'seqMonth':
           seqMonth().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xMonthNumAlign':
+          xMonthNumAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yMonthNumAlign':
+          yMonthNumAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleMonthNum':
+          scaleMonthNum().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleMonthNum':
+          angleMonthNum().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaMonthNum':
+          alphaMonthNum().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'seqMonthNum':
+          seqMonthNum().text = p
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
@@ -1376,9 +1418,6 @@ class AssetsController extends GetxController {
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
-        case 'alignmentText':
-          alignmentText().text = value.toString().replaceAll("'", "");
-          break;
         case 'xTextAlign':
           xTextAlign().text = p
               .parse(value)
@@ -1398,7 +1437,7 @@ class AssetsController extends GetxController {
           songArtist().text = value.toString().replaceAll("'", "");
           break;
         case 'colorText':
-          colorText().text = value.toString().replaceAll("'", "");
+          colorText().text = value.toString().replaceAll("'", "").replaceAll("#", "");
           break;
         case 'alphaCity':
           alphaCity().text = p
@@ -1431,7 +1470,7 @@ class AssetsController extends GetxController {
               .toString();
           break;
         case 'cityColor':
-          cityColor().text = value.toString().replaceAll("'", "");
+          cityColor().text = value.toString().replaceAll("'", "").replaceAll("#", "");
           break;
         case 'cityAlignment':
           cityAlignment().text = value.toString().replaceAll("'", "");

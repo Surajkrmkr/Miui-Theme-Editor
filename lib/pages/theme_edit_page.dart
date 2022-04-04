@@ -128,6 +128,14 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
               assetsController.angleMonth(),
               assetsController.seqMonth()),
           inputRow(
+              "Month Num",
+              assetsController.xMonthNumAlign(),
+              assetsController.yMonthNumAlign(),
+              assetsController.scaleMonthNum(),
+              assetsController.alphaMonthNum(),
+              assetsController.angleMonthNum(),
+              assetsController.seqMonthNum()),
+          inputRow(
               "Year",
               assetsController.xYearAlign(),
               assetsController.yYearAlign(),
@@ -195,7 +203,6 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
           ),
           musicRow(
               assetsController.colorText(),
-              assetsController.alignmentText(),
               assetsController.songTitle(),
               assetsController.songArtist()),
         ],
@@ -786,7 +793,7 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
     );
   }
 
-  musicRow(colorText, alignment, title, artist) {
+  musicRow(colorText, title, artist) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Padding(
@@ -807,24 +814,6 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                     }
                   });
                 },
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 12.0),
-              child: SizedBox(
-                width: 80,
-                child: TextBox(
-                  controller: alignment,
-                  placeholder: 'Alignment',
-                  keyboardType: TextInputType.text,
-                  onChanged: (e) {
-                    setState(() {
-                      if (e.isEmpty) {
-                        alignment.text = 'center';
-                      }
-                    });
-                  },
-                ),
               ),
             ),
             Padding(

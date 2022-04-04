@@ -359,6 +359,40 @@ class ThemeMainStack extends StatelessWidget {
                 ),
               ),
 
+              // Month Num pngs
+              Positioned(
+                top: getTop(textBoxController.yMonthNumAlign(),
+                    constants.timePngHeight.value),
+                left: getLeft(textBoxController.xMonthNumAlign(),
+                    constants.timePngWidth.value),
+                child: Transform.rotate(
+                  angle: getAngle(textBoxController.angleMonthNum()),
+                  child: Transform.scale(
+                    scale: getScale(textBoxController.scaleMonthNum()),
+                    child: Opacity(
+                      opacity: getAlpha(textBoxController.alphaMonthNum()),
+                      child: Row(
+                        children: [
+                          TimeImageWidget(
+                              int1: 'time_0',
+                              height: constants.timePngHeight(),
+                              sequence: double.parse(
+                                      textBoxController.seqMonthNum().value.text)
+                                  .toInt()),
+                          SizedBox(width: 10 * ThemeController.ratio),
+                          TimeImageWidget(
+                              int1: 'time_2',
+                              height: constants.timePngHeight(),
+                              sequence: double.parse(
+                                      textBoxController.seqMonthNum().value.text)
+                                  .toInt()),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
               // Year pngs
               Positioned(
                 top: getTop(textBoxController.yYearAlign(),
