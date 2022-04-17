@@ -376,15 +376,19 @@ class ThemeMainStack extends StatelessWidget {
                           TimeImageWidget(
                               int1: 'time_0',
                               height: constants.timePngHeight(),
-                              sequence: double.parse(
-                                      textBoxController.seqMonthNum().value.text)
+                              sequence: double.parse(textBoxController
+                                      .seqMonthNum()
+                                      .value
+                                      .text)
                                   .toInt()),
                           SizedBox(width: 10 * ThemeController.ratio),
                           TimeImageWidget(
                               int1: 'time_2',
                               height: constants.timePngHeight(),
-                              sequence: double.parse(
-                                      textBoxController.seqMonthNum().value.text)
+                              sequence: double.parse(textBoxController
+                                      .seqMonthNum()
+                                      .value
+                                      .text)
                                   .toInt()),
                         ],
                       ),
@@ -710,7 +714,8 @@ class ThemeMainStack extends StatelessWidget {
 
               // Music Info
               Positioned(
-                top: getTop(textBoxController.yTextAlign(), 50),
+                top: getTop(textBoxController.yTextAlign(), 40),
+                left: getLeft2(textBoxController.xTextAlign(), 280),
                 child: Transform.scale(
                   scale: getScale(textBoxController.scaleText()),
                   child: Column(
@@ -720,7 +725,8 @@ class ThemeMainStack extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 60 * ThemeController.ratio,
                           color: Color(int.parse(
-                              "FF${textBoxController.colorText().value.text}",radix: 16)),
+                              "FF${textBoxController.colorText().value.text}",
+                              radix: 16)),
                         ),
                       ),
                       SizedBox(
@@ -731,7 +737,8 @@ class ThemeMainStack extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 30 * ThemeController.ratio,
                           color: Color(int.parse(
-                                  "FF${textBoxController.colorText().value.text}",radix: 16))
+                                  "FF${textBoxController.colorText().value.text}",
+                                  radix: 16))
                               .withOpacity(0.6),
                         ),
                       ),
