@@ -53,12 +53,35 @@ class AssetsController extends GetxController {
   var alphaMonth = TextEditingController(text: '1.0').obs;
   var seqMonth = TextEditingController(text: '0').obs;
 
+  var xMonthNumAlign = TextEditingController(text: '0.0').obs;
+  var yMonthNumAlign = TextEditingController(text: '0.0').obs;
+  var scaleMonthNum = TextEditingController(text: '1.0').obs;
+  var angleMonthNum = TextEditingController(text: '0.0').obs;
+  var alphaMonthNum = TextEditingController(text: '1.0').obs;
+  var seqMonthNum = TextEditingController(text: '0').obs;
+
   var xWeekAlign = TextEditingController(text: '0.0').obs;
   var yWeekAlign = TextEditingController(text: '0.0').obs;
   var scaleWeek = TextEditingController(text: '1.0').obs;
   var angleWeek = TextEditingController(text: '0.0').obs;
   var alphaWeek = TextEditingController(text: '1.0').obs;
   var seqWeek = TextEditingController(text: '0').obs;
+
+  var xYearAlign = TextEditingController(text: '0.0').obs;
+  var yYearAlign = TextEditingController(text: '0.0').obs;
+  var scaleYear = TextEditingController(text: '1.0').obs;
+  var angleYear = TextEditingController(text: '0.0').obs;
+  var alphaYear = TextEditingController(text: '1.0').obs;
+  var seqYear = TextEditingController(text: '0').obs;
+
+  var xCalenderAlign = TextEditingController(text: '0.0').obs;
+  var yCalenderAlign = TextEditingController(text: '0.0').obs;
+  var scaleCalender = TextEditingController(text: '1.0').obs;
+  var angleCalender = TextEditingController(text: '0.0').obs;
+  var alphaCalender = TextEditingController(text: '1.0').obs;
+  var diffCalender = TextEditingController(text: '50').obs;
+  var scaleCalWeek = TextEditingController(text: '1.0').obs;
+  var scaleCalDate = TextEditingController(text: '1.0').obs;
 
   var xTempAlign = TextEditingController(text: '0.0').obs;
   var yTempAlign = TextEditingController(text: '0.0').obs;
@@ -101,6 +124,22 @@ class AssetsController extends GetxController {
   var alphaPrevBtn = TextEditingController(text: '1.0').obs;
   var seqPrevBtn = TextEditingController(text: '0').obs;
 
+  var scaleText = TextEditingController(text: '1.0').obs;
+  var songTitle = TextEditingController(text: 'Song name').obs;
+  var songArtist = TextEditingController(text: 'Artist').obs;
+  var colorText = TextEditingController(text: '#FF000000').obs;
+  var xTextAlign = TextEditingController(text: '0.0').obs;
+  var yTextAlign = TextEditingController(text: '0.0').obs;
+
+  var scaleCity = TextEditingController(text: '1.0').obs;
+  var alphaCity = TextEditingController(text: '1.0').obs;
+  var angleCity = TextEditingController(text: '0.0').obs;
+  var xCityAlign = TextEditingController(text: '0.0').obs;
+  var yCityAlign = TextEditingController(text: '0').obs;
+  var cityAlignment = TextEditingController(text: 'center').obs;
+  var cityColor = TextEditingController(text: '#FFFFFFFF').obs;
+  var nameCity = TextEditingController(text: 'Cuttack').obs;
+
   var xAnalogAlign = TextEditingController(text: '0.0').obs;
   var yAnalogAlign = TextEditingController(text: '0.0').obs;
   var analogScale = TextEditingController(text: '1.0').obs;
@@ -108,33 +147,14 @@ class AssetsController extends GetxController {
   var alphaAnalog = TextEditingController(text: '1.0').obs;
   var seqAnalog = TextEditingController(text: '0').obs;
 
-  var xChromeAlign = TextEditingController(text: '0.0').obs;
-  var yChromeAlign = TextEditingController(text: '0.0').obs;
-  var scaleChrome = TextEditingController(text: '1.0').obs;
-  var angleChrome = TextEditingController(text: '0.0').obs;
-  var alphaChrome = TextEditingController(text: '1.0').obs;
-  var seqChrome = TextEditingController(text: '0').obs;
-
-  var xFbAlign = TextEditingController(text: '0.0').obs;
-  var yFbAlign = TextEditingController(text: '0.0').obs;
-  var scaleFb = TextEditingController(text: '1.0').obs;
-  var angleFb = TextEditingController(text: '0.0').obs;
-  var alphaFb = TextEditingController(text: '1.0').obs;
-  var seqFb = TextEditingController(text: '0').obs;
-
-  var xWpAlign = TextEditingController(text: '0.0').obs;
-  var yWpAlign = TextEditingController(text: '0.0').obs;
-  var scaleWp = TextEditingController(text: '1.0').obs;
-  var angleWp = TextEditingController(text: '0.0').obs;
-  var alphaWp = TextEditingController(text: '1.0').obs;
-  var seqWp = TextEditingController(text: '0').obs;
-
-  var xTwtAlign = TextEditingController(text: '0.0').obs;
-  var yTwtAlign = TextEditingController(text: '0.0').obs;
-  var scaleTwt = TextEditingController(text: '1.0').obs;
-  var angleTwt = TextEditingController(text: '0.0').obs;
-  var alphaTwt = TextEditingController(text: '1.0').obs;
-  var seqTwt = TextEditingController(text: '0').obs;
+  var lockNormal = true.obs;
+  var lockPress = false.obs;
+  var lockSlide = false.obs;
+  var lockSlideDown = TextEditingController(text: '0').obs;
+  var lockSideUnlLeft = TextEditingController(text: '0').obs;
+  var scaleLockPress = TextEditingController(text: '1.0').obs;
+  var xLockPressAlign = TextEditingController(text: '0.0').obs;
+  var yLockPressAlign = TextEditingController(text: '0.0').obs;
 
   var xCamAlign = TextEditingController(text: '0.0').obs;
   var yCamAlign = TextEditingController(text: '0.0').obs;
@@ -142,13 +162,6 @@ class AssetsController extends GetxController {
   var angleCam = TextEditingController(text: '0.0').obs;
   var alphaCam = TextEditingController(text: '1.0').obs;
   var seqCam = TextEditingController(text: '0').obs;
-
-  var xDialerAlign = TextEditingController(text: '0.0').obs;
-  var yDialerAlign = TextEditingController(text: '0.0').obs;
-  var scaleDialer = TextEditingController(text: '1.0').obs;
-  var angleDialer = TextEditingController(text: '0.0').obs;
-  var alphaDialer = TextEditingController(text: '1.0').obs;
-  var seqDialer = TextEditingController(text: '0').obs;
 
   var xSettingsAlign = TextEditingController(text: '0.0').obs;
   var ySettingsAlign = TextEditingController(text: '0.0').obs;
@@ -164,33 +177,12 @@ class AssetsController extends GetxController {
   var alphaMusic = TextEditingController(text: '1.0').obs;
   var seqMusic = TextEditingController(text: '0').obs;
 
-  var xContactAlign = TextEditingController(text: '0.0').obs;
-  var yContactAlign = TextEditingController(text: '0.0').obs;
-  var scaleContact = TextEditingController(text: '1.0').obs;
-  var angleContact = TextEditingController(text: '0.0').obs;
-  var alphaContact = TextEditingController(text: '1.0').obs;
-  var seqContact = TextEditingController(text: '0').obs;
-
-  var xTelegramAlign = TextEditingController(text: '0.0').obs;
-  var yTelegramAlign = TextEditingController(text: '0.0').obs;
-  var scaleTelegram = TextEditingController(text: '1.0').obs;
-  var angleTelegram = TextEditingController(text: '0.0').obs;
-  var alphaTelegram = TextEditingController(text: '1.0').obs;
-  var seqTelegram = TextEditingController(text: '0').obs;
-
   var xThemesAlign = TextEditingController(text: '0.0').obs;
   var yThemesAlign = TextEditingController(text: '0.0').obs;
   var scaleThemes = TextEditingController(text: '1.0').obs;
   var angleThemes = TextEditingController(text: '0.0').obs;
   var alphaThemes = TextEditingController(text: '1.0').obs;
   var seqThemes = TextEditingController(text: '0').obs;
-
-  var xInstaAlign = TextEditingController(text: '0.0').obs;
-  var yInstaAlign = TextEditingController(text: '0.0').obs;
-  var scaleInsta = TextEditingController(text: '1.0').obs;
-  var angleInsta = TextEditingController(text: '0.0').obs;
-  var alphaInsta = TextEditingController(text: '1.0').obs;
-  var seqInsta = TextEditingController(text: '0').obs;
 
   var xCalcAlign = TextEditingController(text: '0.0').obs;
   var yCalcAlign = TextEditingController(text: '0.0').obs;
@@ -254,7 +246,6 @@ class AssetsController extends GetxController {
   var angleSecurity = TextEditingController(text: '0.0').obs;
   var alphaSecurity = TextEditingController(text: '1.0').obs;
   var seqSecurity = TextEditingController(text: '0').obs;
-
 
   void refreshData() {
     Parser p = Parser();
@@ -512,6 +503,42 @@ class AssetsController extends GetxController {
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
+        case 'xMonthNumAlign':
+          xMonthNumAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yMonthNumAlign':
+          yMonthNumAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleMonthNum':
+          scaleMonthNum().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleMonthNum':
+          angleMonthNum().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaMonthNum':
+          alphaMonthNum().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'seqMonthNum':
+          seqMonthNum().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
         case 'xWeekAlign':
           xWeekAlign().text = p
               .parse(value)
@@ -548,6 +575,90 @@ class AssetsController extends GetxController {
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
+        case 'xYearAlign':
+          xYearAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yYearAlign':
+          yYearAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleYear':
+          scaleYear().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleYear':
+          angleYear().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaYear':
+          alphaYear().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'seqYear':
+          seqYear().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xCalenderAlign':
+          xCalenderAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yCalenderAlign':
+          yCalenderAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleCalender':
+          scaleCalender().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleCalender':
+          angleCalender().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaCalender':
+          alphaCalender().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'diffCalender':
+          diffCalender().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleCalWeek':
+          scaleCalWeek().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleCalDate':
+          scaleCalDate().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
         case 'xTempAlign':
           xTempAlign().text = p
               .parse(value)
@@ -578,7 +689,7 @@ class AssetsController extends GetxController {
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
-        case 'seqTemp': 
+        case 'seqTemp':
           seqTemp().text = p
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
@@ -758,150 +869,6 @@ class AssetsController extends GetxController {
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
-        case 'xChromeAlign':
-          xChromeAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'yChromeAlign':
-          yChromeAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'scaleChrome':
-          scaleChrome().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'angleChrome':
-          angleChrome().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'alphaChrome':
-          alphaChrome().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'seqChrome':
-          seqChrome().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'xFbAlign':
-          xFbAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'yFbAlign':
-          yFbAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'scaleFb':
-          scaleFb().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'angleFb':
-          angleFb().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'alphaFb':
-          alphaFb().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'seqFb':
-          seqFb().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'xWpAlign':
-          xWpAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'yWpAlign':
-          yWpAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'scaleWp':
-          scaleWp().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'angleWp':
-          angleWp().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'alphaWp':
-          alphaWp().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'seqWp':
-          seqWp().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'xTwtAlign':
-          xTwtAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'yTwtAlign':
-          yTwtAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'scaleTwt':
-          scaleTwt().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'angleTwt':
-          angleTwt().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'alphaTwt':
-          alphaTwt().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'seqTwt':
-          seqTwt().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
         case 'xCamAlign':
           xCamAlign().text = p
               .parse(value)
@@ -974,38 +941,41 @@ class AssetsController extends GetxController {
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
-        case 'xDialerAlign':
-          xDialerAlign().text = p
+        case 'lockNormal':
+          lockNormal.value = (value == '1') ? true : false;
+          break;
+        case 'lockPress':
+          lockPress.value = (value == '1') ? true : false;
+          break;
+        case 'lockSlide':
+          lockSlide.value = (value == '1') ? true : false;
+          break;
+        case 'lockSlideDown':
+          lockSlideDown().text = p
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
-        case 'yDialerAlign':
-          yDialerAlign().text = p
+        case 'lockSideUnlLeft':
+          lockSideUnlLeft().text = p
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
-        case 'scaleDialer':
-          scaleDialer().text = p
+        case 'scaleLockPress':
+          scaleLockPress().text = p
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
-        case 'angleDialer':
-          angleDialer().text = p
+        case 'xLockPressAlign':
+          xLockPressAlign().text = p
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
-        case 'alphaDialer':
-          alphaDialer().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'seqDialer':
-          seqDialer().text = p
+        case 'yLockPressAlign':
+          yLockPressAlign().text = p
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
@@ -1082,120 +1052,12 @@ class AssetsController extends GetxController {
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
-        case 'xContactAlign':
-          xContactAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'yContactAlign':
-          yContactAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'scaleContact':
-          scaleContact().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'angleContact':
-          angleContact().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'alphaContact':
-          alphaContact().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'seqContact':
-          seqContact().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'xTelegramAlign':
-          xTelegramAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'yTelegramAlign':
-          yTelegramAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'scaleTelegram':
-          scaleTelegram().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'angleTelegram':
-          angleTelegram().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'alphaTelegram':
-          alphaTelegram().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'seqTelegram':
-          seqTelegram().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'xInstaAlign':
-          xInstaAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'yInstaAlign':
-          yInstaAlign().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'scaleInsta':
-          scaleInsta().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'angleInsta':
-          angleInsta().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'alphaInsta':
-          alphaInsta().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
-        case 'seqInsta':
-          seqInsta().text = p
-              .parse(value)
-              .evaluate(EvaluationType.REAL, ContextModel())
-              .toString();
-          break;
         case 'xThemesAlign':
           xThemesAlign().text = p
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
-          break;  
+          break;
         case 'yThemesAlign':
           yThemesAlign().text = p
               .parse(value)
@@ -1237,7 +1099,7 @@ class AssetsController extends GetxController {
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
-          break;  
+          break;
         case 'scaleCalc':
           scaleCalc().text = p
               .parse(value)
@@ -1550,8 +1412,72 @@ class AssetsController extends GetxController {
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
           break;
-        
-
+        case 'scaleText':
+          scaleText().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xTextAlign':
+          xTextAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yTextAlign':
+          yTextAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'songTitle':
+          songTitle().text = value.toString().replaceAll("'", "");
+          break;
+        case 'songArtist':
+          songArtist().text = value.toString().replaceAll("'", "");
+          break;
+        case 'colorText':
+          colorText().text = value.toString().replaceAll("'", "").replaceAll("#", "");
+          break;
+        case 'alphaCity':
+          alphaCity().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'angleCity':
+          angleCity().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'xCityAlign':
+          xCityAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yCityAlign':
+          yCityAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleCity':
+          scaleCity().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'cityColor':
+          cityColor().text = value.toString().replaceAll("'", "").replaceAll("#", "");
+          break;
+        case 'cityAlignment':
+          cityAlignment().text = value.toString().replaceAll("'", "");
+          break;
+        case 'nameCity':
+          nameCity().text = value.toString().replaceAll("'", "");
+          break;
       }
     });
   }

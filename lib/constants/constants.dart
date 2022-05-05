@@ -31,6 +31,10 @@ class Constants extends GetxController {
   var analogBgHeight = 0.0.obs;
   var analogBgWidth = 0.0.obs;
   var iconHeight = 0.0.obs;
+  var sliderHeight = 0.0.obs;
+  var sliderWidth = 0.0.obs;
+  var unlHeight = 0.0.obs;
+  var unHeight = 0.0.obs;
 
   @override
   void onInit() {
@@ -118,5 +122,28 @@ class Constants extends GetxController {
             AssetsDetails.assetsPath('icon\\wp'))));
           
     iconHeight.value = iconSize.height.toDouble();
+
+    var sliderSize = ImageSizeGetter.getSize(FileInput(File(
+        themeController.rootPath.value +
+            "\\" +
+            AssetsDetails.assetsPath('slider'))));
+    
+    sliderHeight.value = sliderSize.height.toDouble();
+    sliderWidth.value = sliderSize.width.toDouble();
+
+    var unlSize = ImageSizeGetter.getSize(FileInput(File(
+        themeController.rootPath.value +
+            "\\" +
+            AssetsDetails.assetsPath('unl'))));
+    
+    unlHeight.value = unlSize.height.toDouble();
+
+    var unSize = ImageSizeGetter.getSize(FileInput(File(
+        themeController.rootPath.value +
+            "\\" +
+            AssetsDetails.assetsPath('un'))));
+
+    unHeight.value = unSize.height.toDouble();
+
   }
 }
