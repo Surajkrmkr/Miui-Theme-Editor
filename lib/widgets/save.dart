@@ -201,6 +201,7 @@ class SaveXml {
         "seqDate": assetsController.seqDate().text,
         "seqMonth": assetsController.seqMonth().text,
         "seqMonthNum": assetsController.seqMonthNum().text,
+        "seqYear": assetsController.seqYear().text,
         "seqTemp": assetsController.seqTemp().text,
         "seqWeatherIcon": assetsController.seqWeatherIcon().text,
         "seqBtr": assetsController.seqBtr().text,
