@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     var box = Hive.box('darkMode');
     var isDark = box.get('isDark');
     setState(() {
-      darkMode = isDark?? false;
+      darkMode = isDark ?? false;
     });
     super.initState();
   }
@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       data: ThemeData(
         brightness: darkMode ? Brightness.dark : Brightness.light,
         scaffoldBackgroundColor:
-            darkMode ? const Color(0xFF201B2F) : Colors.white,
+            darkMode ? const Color(0xFF282629) : Colors.white,
         accentColor: magenta,
       ),
       child: ScaffoldPage(
@@ -71,16 +71,23 @@ class _HomePageState extends State<HomePage> {
                           itemCount: recentThemeController.recentList.length,
                           itemBuilder: (context, i) {
                             var themeData = recentThemeController.recentList[
-                                recentThemeController.recentList.length - i - 1];
+                                recentThemeController.recentList.length -
+                                    i -
+                                    1];
                             return GestureDetector(
                               onTap: () {
-                                themeController.rootPath.value =
-                                    themeData.themePath;
-                                themeController.setDragThemeDetails();
-                                getTooltip(
-                                    "${themeController.name.string} imported",
-                                    context);
-                                Get.to(() => const ThemeEditPage());
+                                try {
+                                  themeController.rootPath.value =
+                                      themeData.themePath;
+                                  themeController.setDragThemeDetails();
+                                  getTooltip(
+                                      "${themeController.name.string} imported",
+                                      context);
+                                  Get.to(() => const ThemeEditPage());
+                                } on Exception catch (e) {
+                                  getTooltip(
+                                      "Error occured $e", context);
+                                }
                               },
                               child: MouseRegion(
                                 cursor: SystemMouseCursors.click,
@@ -90,8 +97,8 @@ class _HomePageState extends State<HomePage> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     image: DecorationImage(
-                                        image:
-                                            FileImage(File(themeData.imagePath)),
+                                        image: FileImage(
+                                            File(themeData.imagePath)),
                                         fit: BoxFit.cover),
                                   ),
                                   child: Container(
@@ -156,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                         width: 300,
                         height: 300,
                         decoration: BoxDecoration(
-                            color: const Color(0xFFDD4C75),
+                            color: const Color(0xFFB26CD5),
                             borderRadius: BorderRadius.circular(25)),
                         child: const Center(
                             child: Text(

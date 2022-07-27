@@ -47,7 +47,7 @@ class GridLines extends StatelessWidget {
             width: 40,
             child: Text(
               isDown
-                  ? '-' + (val.toInt()).toString()
+                  ? '-${val.toInt()}'
                   : (val.toInt()).toString(),
               style: const TextStyle(
                 fontSize: 12,

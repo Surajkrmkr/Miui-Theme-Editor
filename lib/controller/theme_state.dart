@@ -15,6 +15,6 @@ class ThemeController extends GetxController {
 
   setDragThemeDetails() {
     name.value = rootPath.string.split('\\').last;
-    wallPath.value = rootPath.string + '\\wallpaper\\default_lock_wallpaper.jpg';
+    wallPath.value = '${rootPath.string}\\wallpaper\\default_lock_wallpaper.jpg';
   }
 }

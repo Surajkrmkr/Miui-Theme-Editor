@@ -1,4 +1,3 @@
-import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_editor/constants/constants.dart';
 import 'package:flutter_editor/controller/assets_state.dart';
@@ -201,9 +200,7 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
             assetsController.yTextAlign(),
             assetsController.scaleText(),
           ),
-          musicRow(
-              assetsController.colorText(),
-              assetsController.songTitle(),
+          musicRow(assetsController.colorText(), assetsController.songTitle(),
               assetsController.songArtist()),
         ],
       ),
@@ -336,9 +333,21 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
             assetsController.yCalenderAlign(),
             assetsController.scaleCalender(),
             assetsController.alphaCalender(),
-            assetsController.angleCalender(),
+            assetsController.diffCalender(),
             assetsController.diffCalender(),
           ),
+          inputRow(
+            "Notification",
+            assetsController.xNotificationAlign(),
+            assetsController.yNotificationAlign(),
+            assetsController.scaleNotification(),
+            assetsController.alphaNotification(),
+            assetsController.countNotification(),
+            assetsController.countNotification(),
+          ),
+          notifcationText(
+            assetsController.colorNotification(),
+          )
         ],
       ),
       Column(
@@ -395,23 +404,26 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
       debugShowCheckedModeBanner: false,
       home: FluentTheme(
         data: ThemeData(
-          navigationPaneTheme: const NavigationPaneThemeData(
-              labelPadding: EdgeInsets.only(left: 10),
-              iconPadding: EdgeInsets.only(left: 10)),
+          navigationPaneTheme: NavigationPaneThemeData(
+              selectedIconColor: ButtonState.all(magenta),
+              selectedTextStyle: ButtonState.all(const TextStyle(
+                  color: Color(0xFFB26CD5), fontWeight: FontWeight.bold)),
+              labelPadding: const EdgeInsets.only(left: 10),
+              iconPadding: const EdgeInsets.only(left: 10)),
           brightness: darkMode ? Brightness.dark : Brightness.light,
           scaffoldBackgroundColor:
-              darkMode ? const Color(0xFF201B2F) : const Color(0xFFF5F5F5),
+              darkMode ? const Color(0xFF282629) : const Color(0xFFF5F5F5),
           micaBackgroundColor:
-              darkMode ? const Color(0xFF201B2F) : Colors.white,
+              darkMode ? const Color(0xFF282629) : Colors.white,
           accentColor: magenta,
           inactiveColor: darkMode ? Colors.white : Colors.black,
-          activeColor: const Color(0xffDD4C75),
+          activeColor: const Color(0xFFB26CD5),
           scrollbarTheme: const ScrollbarThemeData(
             thickness: 5,
             hoveringThickness: 10,
             scrollbarColor: Color.fromARGB(92, 221, 76, 117),
-            scrollbarPressingColor: Color(0xffDD4C75),
-            backgroundColor: Color(0xffDD4C75),
+            scrollbarPressingColor: Color(0xFFB26CD5),
+            backgroundColor: Color(0xFFB26CD5),
           ),
         ),
         child: NavigationView(
@@ -460,8 +472,8 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                           SaveXml.updateData();
                           SaveXml.saveXml(themeController.rootPath.string);
                           getTooltip('Saved successfully', context);
-                          launch(themeController.rootPath.string +
-                              "\\lockscreen\\advance\\manifest.xml");
+                          launchUrl(Uri.file(
+                              "${themeController.rootPath.string}\\lockscreen\\advance\\manifest.xml"));
                         }),
                   ),
                 ),
@@ -471,8 +483,8 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                     child: IconButton(
                         icon: const Icon(FluentIcons.folder),
                         onPressed: () async {
-                          launch(themeController.rootPath.string +
-                              "\\lockscreen\\advance");
+                          launchUrl(Uri.file(
+                              "${themeController.rootPath.string}\\lockscreen\\advance"));
                         }),
                   ),
                 ),
@@ -482,8 +494,8 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
                     child: IconButton(
                         icon: const Icon(FluentIcons.brush),
                         onPressed: () async {
-                          launch(
-                              themeController.rootPath.string + "\\icons\\res");
+                          launchUrl(Uri.file(
+                              "${themeController.rootPath.string}\\icons\\res"));
                         }),
                   ),
                 ),
@@ -853,6 +865,30 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  notifcationText(colorText) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 4.0),
+        child: SizedBox(
+          width: 100,
+          child: TextBox(
+            controller: colorText,
+            placeholder: 'Color',
+            keyboardType: TextInputType.text,
+            onChanged: (e) {
+              setState(() {
+                if (e.isEmpty) {
+                  colorText.text = 'FFFFFFFF';
+                }
+              });
+            },
+          ),
         ),
       ),
     );

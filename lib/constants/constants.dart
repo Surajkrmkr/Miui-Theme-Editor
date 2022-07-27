@@ -22,6 +22,10 @@ class Constants extends GetxController {
   var monthPngWidth = 0.0.obs;
   var weatherIconHeight = 0.0.obs;
   var weatherIconWidth = 0.0.obs;
+  var notificationHeight = 0.0.obs;
+  var notificationWidth = 0.0.obs;
+  var notificationCloseHeight = 0.0.obs;
+  var notificationCloseWidth = 0.0.obs;
   var musicBgHeight = 0.0.obs;
   var musicBgWidth = 0.0.obs;
   var nextBtnHeight = 0.0.obs;
@@ -45,105 +49,90 @@ class Constants extends GetxController {
   getSize() {
     final ThemeController themeController = Get.find();
     var amSize = ImageSizeGetter.getSize(FileInput(File(
-        themeController.rootPath.string +
-            "\\" +
-            AssetsDetails.timePath('am_0', 0))));
+        "${themeController.rootPath.string}\\${AssetsDetails.timePath('am_0', 0)}")));
 
     amPngHeight.value = amSize.height.toDouble();
     amPngWidth.value = amSize.width.toDouble();
 
     var timeSize = ImageSizeGetter.getSize(FileInput(File(
-        themeController.rootPath.value +
-            "\\" +
-            AssetsDetails.timePath('time_2', 0))));
+        "${themeController.rootPath.value}\\${AssetsDetails.timePath('time_2', 0)}")));
 
     timePngHeight.value = timeSize.height.toDouble();
     timePngWidth.value = timeSize.width.toDouble();
 
     var weekSize = ImageSizeGetter.getSize(FileInput(File(
-        themeController.rootPath.value +
-            "\\" +
-            AssetsDetails.timePath('Week_2', 0))));
+        "${themeController.rootPath.value}\\${AssetsDetails.timePath('Week_2', 0)}")));
 
     weekPngHeight.value = weekSize.height.toDouble();
     weekPngWidth.value = weekSize.width.toDouble();
 
     var monthSize = ImageSizeGetter.getSize(FileInput(File(
-        themeController.rootPath.value +
-            "\\" +
-            AssetsDetails.timePath('mo_2', 0))));
+        "${themeController.rootPath.value}\\${AssetsDetails.timePath('mo_2', 0)}")));
 
     monthPngHeight.value = monthSize.height.toDouble();
     monthPngWidth.value = monthSize.width.toDouble();
 
     var weatherIconSize = ImageSizeGetter.getSize(FileInput(File(
-        themeController.rootPath.value +
-            "\\" +
-            AssetsDetails.assetsPath('weatherMini_src\\weather_1'))));
+        "${themeController.rootPath.value}\\${AssetsDetails.assetsPath('weatherMini_src\\weather_1')}")));
 
     weatherIconHeight.value = weatherIconSize.height.toDouble();
     weatherIconWidth.value = weatherIconSize.width.toDouble();
 
+    var notificationSize = ImageSizeGetter.getSize(FileInput(File(
+        "${themeController.rootPath.value}\\${AssetsDetails.assetsPath('notification\\bg')}")));
+
+    notificationHeight.value = notificationSize.height.toDouble();
+    notificationWidth.value = notificationSize.width.toDouble();
+
+    var notificationCloseSize = ImageSizeGetter.getSize(FileInput(File(
+        "${themeController.rootPath.value}\\${AssetsDetails.assetsPath('notification\\close')}")));
+
+    notificationCloseHeight.value = notificationCloseSize.height.toDouble();
+    notificationCloseWidth.value = notificationCloseSize.width.toDouble();
+
     var musicBGSize = ImageSizeGetter.getSize(FileInput(File(
-        themeController.rootPath.value +
-            "\\" +
-            AssetsDetails.assetsPath('music\\bg'))));
+        "${themeController.rootPath.value}\\${AssetsDetails.assetsPath('music\\bg')}")));
 
     musicBgHeight.value = musicBGSize.height.toDouble();
     musicBgWidth.value = musicBGSize.width.toDouble();
 
     var nextBtnSize = ImageSizeGetter.getSize(FileInput(File(
-        themeController.rootPath.value +
-            "\\" +
-            AssetsDetails.assetsPath('music\\next'))));
+        "${themeController.rootPath.value}\\${AssetsDetails.assetsPath('music\\next')}")));
 
     nextBtnHeight.value = nextBtnSize.height.toDouble();
     nextBtnWidth.value = nextBtnSize.width.toDouble();
 
     var prevBtnSize = ImageSizeGetter.getSize(FileInput(File(
-        themeController.rootPath.value +
-            "\\" +
-            AssetsDetails.assetsPath('music\\prev'))));
+        "${themeController.rootPath.value}\\${AssetsDetails.assetsPath('music\\prev')}")));
 
     prevBtnHeight.value = prevBtnSize.height.toDouble();
     prevBtnWidth.value = prevBtnSize.width.toDouble();
 
     var analogBgSize = ImageSizeGetter.getSize(FileInput(File(
-        themeController.rootPath.value +
-            "\\" +
-            AssetsDetails.assetsPath('clock_src\\clock1\\bg'))));
+        "${themeController.rootPath.value}\\${AssetsDetails.assetsPath('clock_src\\clock1\\bg')}")));
 
     analogBgHeight.value = analogBgSize.height.toDouble();
     analogBgWidth.value = analogBgSize.width.toDouble();
 
     var iconSize = ImageSizeGetter.getSize(FileInput(File(
-        themeController.rootPath.value +
-            "\\" +
-            AssetsDetails.assetsPath('icon\\wp'))));
-          
+        "${themeController.rootPath.value}\\${AssetsDetails.assetsPath('icon\\wp')}")));
+
     iconHeight.value = iconSize.height.toDouble();
 
     var sliderSize = ImageSizeGetter.getSize(FileInput(File(
-        themeController.rootPath.value +
-            "\\" +
-            AssetsDetails.assetsPath('slider'))));
-    
+        "${themeController.rootPath.value}\\${AssetsDetails.assetsPath('slider')}")));
+
     sliderHeight.value = sliderSize.height.toDouble();
     sliderWidth.value = sliderSize.width.toDouble();
 
     var unlSize = ImageSizeGetter.getSize(FileInput(File(
-        themeController.rootPath.value +
-            "\\" +
-            AssetsDetails.assetsPath('unl'))));
-    
+        "${themeController.rootPath.value}\\${AssetsDetails.assetsPath('unl')}")));
+
     unlHeight.value = unlSize.height.toDouble();
 
     var unSize = ImageSizeGetter.getSize(FileInput(File(
-        themeController.rootPath.value +
-            "\\" +
-            AssetsDetails.assetsPath('un'))));
+        "${themeController.rootPath.value}\\${AssetsDetails.assetsPath('un')}")));
 
     unHeight.value = unSize.height.toDouble();
-
   }
 }

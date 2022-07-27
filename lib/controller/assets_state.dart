@@ -83,6 +83,13 @@ class AssetsController extends GetxController {
   var scaleCalWeek = TextEditingController(text: '1.0').obs;
   var scaleCalDate = TextEditingController(text: '1.0').obs;
 
+  var xNotificationAlign = TextEditingController(text: '0.0').obs;
+  var yNotificationAlign = TextEditingController(text: '0.0').obs;
+  var scaleNotification = TextEditingController(text: '1.0').obs;
+  var colorNotification = TextEditingController(text: '#FF000000').obs;
+  var alphaNotification = TextEditingController(text: '1.0').obs;
+  var countNotification = TextEditingController(text: '3').obs;
+
   var xTempAlign = TextEditingController(text: '0.0').obs;
   var yTempAlign = TextEditingController(text: '0.0').obs;
   var scaleTemp = TextEditingController(text: '1.0').obs;
@@ -658,6 +665,39 @@ class AssetsController extends GetxController {
               .parse(value)
               .evaluate(EvaluationType.REAL, ContextModel())
               .toString();
+          break;
+        case 'xNotificationAlign':
+          xNotificationAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'yNotificationAlign':
+          yNotificationAlign().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'scaleNotification':
+          scaleNotification().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'alphaNotification':
+          alphaNotification().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'countNotification':
+          countNotification().text = p
+              .parse(value)
+              .evaluate(EvaluationType.REAL, ContextModel())
+              .toString();
+          break;
+        case 'colorNotification':
+          colorNotification().text = value.toString().replaceAll("'", "").replaceAll("#", "");
           break;
         case 'xTempAlign':
           xTempAlign().text = p

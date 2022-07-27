@@ -22,7 +22,7 @@ class TimeImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     File image = File(
-        themeController.rootPath.string + "\\" + AssetsDetails.timePath(int1,sequence));
+        "${themeController.rootPath.string}\\${AssetsDetails.timePath(int1,sequence)}");
     return Image.file(image, height: height * ThemeController.ratio);
   }
 }
@@ -41,7 +41,7 @@ class AssetImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     File image = File(
-        themeController.rootPath.string + "\\" + AssetsDetails.assetsPath(name));
+        "${themeController.rootPath.string}\\${AssetsDetails.assetsPath(name)}");
     return Image.file(
       image,
       height: height * ThemeController.ratio,
@@ -65,7 +65,7 @@ class Time2ImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     File image = File(
-        themeController.rootPath.string + "\\" + AssetsDetails.assetsPath(int1));
+        "${themeController.rootPath.string}\\${AssetsDetails.assetsPath(int1)}");
     return Image.file(image, height: height * ThemeController.ratio);
   }
 }

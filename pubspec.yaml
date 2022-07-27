@@ -40,17 +40,17 @@ dependencies:
   hive: ^2.0.6
   hive_flutter: ^1.1.0
   hive_generator: ^1.1.2
-  image_size_getter: ^1.0.0
+  image_size_getter: ^2.1.2
   math_expressions: ^2.3.0
   path_provider: ^2.0.9
   path_provider_windows: ^2.0.5
   url_launcher: ^6.0.20
-  window_manager: ^0.1.5
+  window_manager: ^0.2.5
   flex_color_picker: ^2.3.1
-  xml: ^5.3.1
+  xml: ^6.1.0
 
 dev_dependencies:
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
 

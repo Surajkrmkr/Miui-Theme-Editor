@@ -5,7 +5,7 @@ import 'package:flutter_editor/assets/details.dart';
 import 'package:flutter_editor/constants/constants.dart';
 import 'package:flutter_editor/controller/assets_state.dart';
 import 'package:flutter_editor/controller/theme_state.dart';
-import 'package:flutter_editor/widgets/imageGrp.dart';
+import 'package:flutter_editor/widgets/image_grp.dart';
 import 'package:get/get.dart';
 
 class ThemeMainStack extends StatelessWidget {
@@ -88,9 +88,8 @@ class ThemeMainStack extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               Image.file(File(themeController.wallPath.string)),
-              Image.file(File(themeController.rootPath.string +
-                  "\\" +
-                  AssetsDetails.themeBg)),
+              Image.file(File(
+                  "${themeController.rootPath.string}\\${AssetsDetails.themeBg}")),
               // Grid
               // Container(
               //     height: Constants.sh * ThemeController.ratio,
@@ -466,6 +465,54 @@ class ThemeMainStack extends StatelessWidget {
                                   .toInt()),
                         ],
                       ),
+                    ),
+                  ),
+                ),
+              ),
+
+              // Notification pngs
+              Positioned(
+                top: getTop(textBoxController.yNotificationAlign(),
+                    constants.notificationHeight.value),
+                left: getLeft2(textBoxController.xNotificationAlign(),
+                    constants.notificationWidth.value),
+                child: Transform.scale(
+                  scale: getScale(textBoxController.scaleNotification()),
+                  child: Opacity(
+                    opacity: getAlpha(textBoxController.alphaNotification()),
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        AssetImageWidget(
+                          name: 'notification\\bg',
+                          height: constants.notificationHeight(),
+                        ),
+                        Positioned(
+                          left: 5,
+                          child: AssetImageWidget(
+                            name: 'icon\\music',
+                            height: constants.iconHeight() - 20,
+                          ),
+                        ),
+                        Positioned(
+                          right: 10,
+                          child: AssetImageWidget(
+                            name: 'notification\\close',
+                            height: constants.notificationCloseHeight(),
+                          ),
+                        ),
+                        Text(
+                          "HII Piyush Randwa",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 40 * ThemeController.ratio,
+                            color: Color(int.parse(
+                                    "FF${textBoxController.colorNotification().value.text}",
+                                    radix: 16))
+                                .withOpacity(0.6),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
