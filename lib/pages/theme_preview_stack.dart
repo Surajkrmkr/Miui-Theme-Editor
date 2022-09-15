@@ -87,9 +87,11 @@ class ThemeMainStack extends StatelessWidget {
           child: Stack(
             alignment: Alignment.center,
             children: [
-              Image.memory(File(themeController.wallPath.string)),
+              Image.memory(
+                  File(themeController.wallPath.string).readAsBytesSync()),
               Image.memory(File(
-                  "${themeController.rootPath.string}\\${AssetsDetails.themeBg}")),
+                      "${themeController.rootPath.string}\\${AssetsDetails.themeBg}")
+                  .readAsBytesSync()),
               // Grid
               // Container(
               //     height: Constants.sh * ThemeController.ratio,
