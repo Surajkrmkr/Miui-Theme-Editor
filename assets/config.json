@@ -1,0 +1,28 @@
+{
+  "Time": [
+    {
+      "id": 1,
+      "name": "hour",
+      "field": [
+        { "id": 1, "name": "x1Align", "value": 0 },
+        { "id": 2, "name": "y1Align", "value": 0 },
+        { "id": 3, "name": "scale1", "value": 1 },
+        { "id": 4, "name": "angle1", "value": 0 },
+        { "id": 5, "name": "alpha1", "value": 1 },
+        { "id": 6, "name": "seq1", "value": 1 }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "minute",
+      "field": [
+        { "id": 1, "name": "x2Align", "value": 0 },
+        { "id": 2, "name": "y2Align", "value": 0 },
+        { "id": 3, "name": "scale2", "value": 1 },
+        { "id": 4, "name": "angle2", "value": 0 },
+        { "id": 5, "name": "alpha2", "value": 1 },
+        { "id": 6, "name": "seq2", "value": 1 }
+      ]
+    }
+  ]
+}

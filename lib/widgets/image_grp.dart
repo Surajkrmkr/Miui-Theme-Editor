@@ -1,9 +1,12 @@
 import 'dart:io';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_editor/assets/details.dart';
 import 'package:flutter_editor/constants/constants.dart';
 import 'package:flutter_editor/controller/theme_state.dart';
 import 'package:get/get.dart';
+
+import '../bloc/theme_bloc.dart';
 
 class TimeImageWidget extends StatelessWidget {
   TimeImageWidget({
@@ -14,15 +17,15 @@ class TimeImageWidget extends StatelessWidget {
   }) : super(key: key);
 
   final ThemeController themeController = Get.find<ThemeController>();
-  final Constants constants = Get.find<Constants>();
   final dynamic int1;
   final double height;
   final int sequence;
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<ThemeBloc>();
     File image = File(
-        "${themeController.rootPath.string}\\${AssetsDetails.timePath(int1, sequence)}");
+        "${bloc.rootPath}\\${AssetsDetails.timePath(int1, sequence)}");
     return Image.memory(image.readAsBytesSync(),
         height: height * ThemeController.ratio);
   }

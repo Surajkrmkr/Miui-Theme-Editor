@@ -10,6 +10,8 @@ import 'package:flutter_editor/widgets/tooltip.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
+import 'theme_edit_page2.dart';
+
 bool darkMode = false;
 
 class HomePage extends StatefulWidget {
@@ -85,8 +87,7 @@ class _HomePageState extends State<HomePage> {
                                       context);
                                   Get.to(() => const ThemeEditPage());
                                 } on Exception catch (e) {
-                                  getTooltip(
-                                      "Error occured $e", context);
+                                  getTooltip("Error occured $e", context);
                                 }
                               },
                               child: MouseRegion(
@@ -173,15 +174,17 @@ class _HomePageState extends State<HomePage> {
                       ),
                       onDragDone: (detail) {
                         var path = detail.files.first.path;
-                        themeController.rootPath.value = path;
-                        themeController.setDragThemeDetails();
-                        recentThemeController.addToRecent(
-                            name: themeController.name.string,
-                            imagePath: themeController.wallPath.string,
-                            themePath: themeController.rootPath.string);
-                        getTooltip(
-                            "${themeController.name.string} imported", context);
-                        Get.to(() => const ThemeEditPage());
+                        // themeController.rootPath.value = path;
+                        // themeController.setDragThemeDetails();
+                        // recentThemeController.addToRecent(
+                        //     name: themeController.name.string,
+                        //     imagePath: themeController.wallPath.string,
+                        //     themePath: themeController.rootPath.string);
+                        // getTooltip(
+                        //     "${themeController.name.string} imported", context);
+                        Get.to(() => ThemeEditPage2(
+                              path: path,
+                            ));
                       }),
                 ],
               ),
