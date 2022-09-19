@@ -599,7 +599,7 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
               Text(
                 header,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -737,7 +737,7 @@ class _ThemeEditPageState extends State<ThemeEditPage> {
           Text(
             header,
             style: const TextStyle(
-              fontSize: 18,
+              fontSize: 15,
               fontWeight: FontWeight.bold,
             ),
           ),

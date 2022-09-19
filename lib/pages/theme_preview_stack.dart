@@ -165,7 +165,7 @@ class ThemeMainStack extends StatelessWidget {
                               sequence: double.parse(
                                       textBoxController.seq1().value.text)
                                   .toInt()),
-                          SizedBox(width: 10 * ThemeController.ratio),
+                          // SizedBox(width: 10 * ThemeController.ratio),
                           TimeImageWidget(
                               int1: 'time_2',
                               height: constants.timePngHeight(),
@@ -198,7 +198,6 @@ class ThemeMainStack extends StatelessWidget {
                               sequence: double.parse(
                                       textBoxController.seq2().value.text)
                                   .toInt()),
-                          SizedBox(width: 10 * ThemeController.ratio),
                           TimeImageWidget(
                               int1: 'time_6',
                               height: constants.timePngHeight(),
@@ -231,7 +230,6 @@ class ThemeMainStack extends StatelessWidget {
                               sequence: double.parse(
                                       textBoxController.seq3().value.text)
                                   .toInt()),
-                          SizedBox(width: 10 * ThemeController.ratio),
                           TimeImageWidget(
                               int1: 'time_0',
                               height: constants.timePngHeight(),
