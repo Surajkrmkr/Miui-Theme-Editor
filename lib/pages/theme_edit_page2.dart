@@ -99,51 +99,7 @@ class ThemeEditPage2 extends StatelessWidget {
                                   ),
                                 ),
                                 // ThemeMainStack(),
-                                Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    Image.memory(
-                                        File(bloc.wallPath!).readAsBytesSync()),
-                                    Image.memory(File(
-                                            "${bloc.rootPath}\\${AssetsDetails.themeBg}")
-                                        .readAsBytesSync()),
-
-                                    // Time pngs
-                                    Positioned(
-                                      top: getTop(varDict!["y1Align"], 169),
-                                      left: getLeft(varDict["x1Align"], 107),
-                                      child: Transform.rotate(
-                                        angle: getAngle(varDict["angle1"]),
-                                        child: Transform.scale(
-                                          scale: getScale(varDict["scale1"]),
-                                          child: Opacity(
-                                            opacity:
-                                                getAlpha(varDict["alpha1"]),
-                                            child: Row(
-                                              children: [
-                                                TimeImageWidget(
-                                                    int1: 'time_0',
-                                                    height: 169,
-                                                    sequence: double.parse(
-                                                            varDict["seq1"])
-                                                        .toInt()),
-                                                SizedBox(
-                                                    width: 10 *
-                                                        ThemeController.ratio),
-                                                TimeImageWidget(
-                                                    int1: 'time_2',
-                                                    height: 169,
-                                                    sequence: double.parse(
-                                                            varDict["seq1"])
-                                                        .toInt()),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                )
+                                previewStack(context)
                                 // isRulerOpen ? const GridLines() : Container(),
                               ],
                             ),
